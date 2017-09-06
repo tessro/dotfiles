@@ -6,7 +6,7 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
-    
+
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
         puts "identical ~/.#{file.sub('.erb', '')}"
@@ -29,6 +29,16 @@ task :install do
     else
       replace_file(file)
     end
+
+    install_vim_submodules if file == 'vim'
+  end
+end
+
+def install_vim_submodules
+  if system %Q{cd #{File.join(ENV['HOME'], '.vim')} && git submodule update --init --recursive}
+    puts 'Successfully installed all vim git submodules'
+  else
+    puts 'Failed to install vim git submodules'
   end
 end
 
