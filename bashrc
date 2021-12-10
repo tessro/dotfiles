@@ -49,7 +49,9 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Load `__git_ps1`
-. /usr/lib/git-core/git-sh-prompt
+if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+  . /usr/lib/git-core/git-sh-prompt
+fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
