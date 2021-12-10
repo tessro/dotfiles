@@ -43,7 +43,8 @@ test -z "$BASH_COMPLETION" && {
 _expand() { return 0; }
 __expand_tilde_by_ref() { return 0; }
 
-export GREP_OPTIONS='-i -n --color=auto' GREP_COLOR='1;32'
+alias grep='grep --color=auto'
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
