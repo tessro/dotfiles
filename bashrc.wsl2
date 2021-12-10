@@ -1,4 +1,5 @@
-if [ -z $GPG_AGENT_SOCK ]; then
+# If there's an 'extra' socket already, we're probably in a devcontainer
+if [ ! -S $HOME/.gnupg/S.gpg-agent.extra ]; then
   export GPG_AGENT_SOCK=$HOME/.gnupg/S.gpg-agent
   ss -a | grep -q $GPG_AGENT_SOCK
   if [ $? -ne 0 ]; then
