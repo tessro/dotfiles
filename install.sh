@@ -2,7 +2,7 @@
 
 set -e
 
-excludes="install.sh README.md LICENSE"
+excludes="install.sh install-unattended.sh README.md LICENSE"
 
 function usage {
   echo "usage: install.sh [-y]"
