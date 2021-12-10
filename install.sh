@@ -2,7 +2,7 @@
 
 set -e
 
-excludes="install.sh Rakefile README.rdoc LICENSE"
+excludes="install.sh README.md LICENSE"
 
 function sync_submodules {
   git submodule init
