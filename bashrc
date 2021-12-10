@@ -71,6 +71,7 @@ alias be="bundle exec"
 
 if which hub >/dev/null ; then alias git=hub ; fi
 
+if uname -r | grep -q microsoft-standard-WSL2 ; then source ~/.bashrc.wsl2 ; fi
 if [[ -s ~/.bashrc.local ]] ; then source ~/.bashrc.local ; fi
 
 if type -P rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi

@@ -1,0 +1,13 @@
+export GPG_AGENT_SOCK=$HOME/.gnupg/S.gpg-agent
+ss -a | grep -q $GPG_AGENT_SOCK
+if [ $? -ne 0 ]; then
+  rm -f $GPG_AGENT_SOCK
+  setsid socat UNIX-LISTEN:$GPG_AGENT_SOCK,fork EXEC:"$HOME/bin/sorelay.exe '$WIN_AGENT_HOME/S.gpg-agent'",nofork &
+fi
+
+export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+ss -a | grep -q $SSH_AUTH_SOCK
+if [ $? -ne 0 ]; then
+  rm -f $SSH_AUTH_SOCK
+  setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$HOME/bin/sorelay.exe '$WIN_AGENT_HOME/S.gpg-agent.ssh'",nofork &
+fi
