@@ -48,6 +48,9 @@ alias grep='grep --color=auto'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+# Load `__git_ps1`
+. /usr/lib/git-core/git-sh-prompt
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 export PS1='\u@\h:\w$(__git_ps1)\$ '
