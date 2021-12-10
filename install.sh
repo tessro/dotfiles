@@ -4,6 +4,25 @@ set -e
 
 excludes="install.sh README.md LICENSE"
 
+function usage {
+  echo "usage: install.sh [-y]"
+  exit 1
+}
+
+# This starts off falsy, and becomes true with `-y` or choice `a`
+replace_all=
+
+while getopts ":y" opt; do
+  case $opt in
+    y)
+      replace_all=true
+      ;;
+    \?)
+      usage
+      ;;
+  esac
+done
+
 function sync_submodules {
   git submodule init
   git submodule update
@@ -16,7 +35,7 @@ function should_skip {
 }
 
 function install {
-  local replace_all choice
+  local choice
 
   for src in * ; do
     should_skip $src && continue
