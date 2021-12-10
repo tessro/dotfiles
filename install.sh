@@ -4,6 +4,11 @@ set -e
 
 excludes="install.sh Rakefile README.rdoc LICENSE"
 
+function sync_submodules {
+  git submodule init
+  git submodule update
+}
+
 function should_skip {
   for e in $excludes ; do
     [[ "$1" == "$e" ]] && return
@@ -62,4 +67,5 @@ function replace_file {
   ln -s $src $dest
 }
 
+sync_submodules
 install
