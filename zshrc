@@ -1,3 +1,17 @@
+# Install Homebrew into PATH/FPATH
+#
+# We do this early for two reasons:
+# 1. compinit reads $FPATH (and completions are in /opt)
+# 2. nvm needs to be ahead of Homebrew in $PATH
+if [[ uname -eq "Darwin" ]]
+then
+  if [ -z $TMUX ]; then
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  fi
+
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 # Set custom prompt
 setopt PROMPT_SUBST
 autoload -U promptinit
@@ -5,11 +19,14 @@ promptinit
 prompt ptr
 
 # Initialize completion
-autoload -U compinit
+autoload -Uz compinit
 compinit -D
 
+
 # Add paths
-export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+if [[ -z $TMUX ]]; then
+  export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+fi
 
 # Handy
 function mkcd () {
@@ -45,7 +62,7 @@ if which hub >/dev/null ; then alias git=hub ; fi
 
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
-if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
+if [ -z $TMUX ] && which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
