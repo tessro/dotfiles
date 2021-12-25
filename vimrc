@@ -235,6 +235,10 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_sign_info = '💬'
 
+" eslint_d configuration
+let g:ale_javascript_eslint_executable = 'eslint_d'
+let g:ale_javascript_eslint_use_global = 1
+
 " Remove this line if you adopt another completion plugin, like Deoplete
 let g:ale_completion_enabled = 1
 
