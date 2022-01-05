@@ -43,6 +43,7 @@ export WORDCHARS='*?[]~&;!$%^<>'
 
 if which hub >/dev/null ; then alias git=hub ; fi
 
+if [[ $OSTYPE == darwin* ]] ; then source ~/.zshrc.darwin ; fi
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
 if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
