@@ -1,3 +1,6 @@
+# Add our functions to the search path
+FPATH="$FPATH:$HOME/.zsh/func"
+
 # Set custom prompt
 autoload -Uz promptinit
 promptinit
