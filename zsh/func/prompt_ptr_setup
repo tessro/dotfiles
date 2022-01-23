@@ -9,7 +9,13 @@ EOF
 prompt_ptr_precmd() {
   vcs_info
 
-  PS1="%(?.%F{green}✓.%F{red}✗)%f %2~$vcs_info_msg_0_ %# "
+  # Show user and host when connected via SSH
+  local remote
+  if [ ! -z $SSH_CLIENT ]; then
+    remote='%n@%m '
+  fi
+
+  PS1="%(?.%F{green}✓.%F{red}✗)%f $remote%2~$vcs_info_msg_0_ %# "
 }
 
 prompt_ptr_setup() {
