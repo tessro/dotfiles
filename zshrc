@@ -1,6 +1,5 @@
 # Set custom prompt
-setopt PROMPT_SUBST
-autoload -U promptinit
+autoload -Uz promptinit
 promptinit
 prompt ptr
 
