@@ -15,11 +15,12 @@ fi
 # Also use bash completions
 autoload -U +X bashcompinit && bashcompinit
 
+export GOPATH="$HOME/Development/go"
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 if [ -z $TMUX ]; then
   export PATH=$PATH:$GOPATH/bin:$HOME/Development/src/depot_tools
 fi
-export GOPATH="$HOME/Development/go"
-export JAVA_HOME=$(/usr/libexec/java_home)
 
 # GPG+SSH
 if which gpgconf >/dev/null ; then
