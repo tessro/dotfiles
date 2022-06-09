@@ -53,3 +53,10 @@ if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export AWS_DEFAULT_REGION="us-west-2"
+
+# Disable the use of the Amazon EC2 instance metadata service (IMDS). This
+# eliminates a potential security risk and also speeds up failure of aws
+# commands when no profile is selected.
+export AWS_EC2_METADATA_DISABLED="true"
