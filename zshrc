@@ -13,6 +13,9 @@ compinit -D
 # Add paths
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
+# Rust
+source $HOME/.cargo/env
+
 # Handy
 function mkcd () {
   mkdir -p "$*"
