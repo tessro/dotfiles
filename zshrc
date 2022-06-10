@@ -33,7 +33,7 @@ export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
 # Use vim as the editor ...
-export EDITOR=vi
+export EDITOR=nvim
 # ... but use emacs mode on the command line
 bindkey -e
 
