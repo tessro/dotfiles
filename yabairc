@@ -1,0 +1,14 @@
+yabai -m config layout          bsp
+yabai -m config top_padding     6
+yabai -m config bottom_padding  6
+yabai -m config left_padding    6
+yabai -m config right_padding   6
+yabai -m config window_gap      6
+
+# float system preferences
+yabai -m rule --add app='^System Information$' manage=off
+yabai -m rule --add app='^System Preferences$' manage=off
+
+# float video calls
+yabai -m rule --add app='^Whereby$' manage=off grid=4:4:1:0:2:2
+yabai -m rule --add app='^zoom.us$' manage=off grid=4:4:1:0:2:2
