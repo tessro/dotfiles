@@ -46,6 +46,8 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
+set updatetime=100
+
 " Display
 set nohlsearch
 set nowrap
