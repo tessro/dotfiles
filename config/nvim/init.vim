@@ -8,6 +8,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 " Editing
 Plug 'tpope/vim-surround'
 
+" Git
+Plug 'airblade/vim-gitgutter'
+
 " Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 
