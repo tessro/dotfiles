@@ -15,7 +15,12 @@ return require('packer').startup(function(use)
   use 'rose-pine/neovim'
 
   -- Many utilities
-  use 'echasnovski/mini.nvim'
+  use {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('plugins.mini')
+    end,
+  }
 
   -- Autocomplete
   use {
@@ -25,7 +30,10 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-vsnip',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
-    }
+    },
+    config = function()
+      require('plugins.cmp')
+    end,
   }
 
   -- Fuzzy find
@@ -38,6 +46,9 @@ return require('packer').startup(function(use)
         'telescope-frecency.nvim',
         'telescope-fzf-native.nvim',
       },
+      config = function()
+        require('plugins.telescope')
+      end,
     },
     {
       'nvim-telescope/telescope-frecency.nvim',
@@ -77,5 +88,11 @@ return require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
 
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('plugins.treesitter')
+    end
+  }
 end)
