@@ -39,7 +39,9 @@ Plug 'hrsh7th/vim-vsnip'
 " Optional
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'tami5/sqlite.lua'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-frecency.nvim'
 
 " Color scheme used in the GIFs!
 Plug 'arcticicestudio/nord-vim'
@@ -86,12 +88,20 @@ set wmh=0 " Allow splits to be zero-height
 tnoremap <Esc> <C-\><C-n>
 
 lua <<EOF
-require('telescope').setup{
+local telescope = require('telescope')
+telescope.load_extension('frecency')
+telescope.setup{
   defaults = {
     mappings = {
       i = {
         ['<esc>'] = 'close',
       },
+    },
+  },
+  pickers = {
+    buffers = {
+      sort_mru = true,
+      ignore_current_buffer = true,
     },
   },
 }
