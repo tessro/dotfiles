@@ -95,6 +95,7 @@ set wmh=0 " Allow splits to be zero-height
 tnoremap <Esc> <C-\><C-n>
 
 lua <<EOF
+require('mini.pairs').setup()
 require('mini.surround').setup()
 EOF
 
