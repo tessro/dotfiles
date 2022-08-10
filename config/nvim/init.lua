@@ -1,100 +1,100 @@
-call plug#begin()
+vim.call('plug#begin')
+local Plug = vim.fn['plug#']
 
-" Many utilities
+-- Many utilities
 Plug 'echasnovski/mini.nvim'
 
-" Fuzzy find
+-- Fuzzy find
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'})
 
-" Git
+-- Git
 Plug 'airblade/vim-gitgutter'
 
-" Collection of common configurations for the Nvim LSP client
+-- Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+-- Treesitter
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
-" TypeScript
+-- TypeScript
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
-" Completion framework
+-- Completion framework
 Plug 'hrsh7th/nvim-cmp'
 
-" LSP completion source for nvim-cmp
+-- LSP completion source for nvim-cmp
 Plug 'hrsh7th/cmp-nvim-lsp'
 
-" Snippet completion source for nvim-cmp
+-- Snippet completion source for nvim-cmp
 Plug 'hrsh7th/cmp-vsnip'
 
-" Other useful completion sources
+-- Other useful completion sources
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 
-" See hrsh7th's other plugins for more completion sources!
+-- See hrsh7th's other plugins for more completion sources!
 
-" To enable more of the features of rust-analyzer, such as inlay hints and more!
+-- To enable more of the features of rust-analyzer, such as inlay hints and more!
 Plug 'simrat39/rust-tools.nvim'
 
-" Snippet engine
+-- Snippet engine
 Plug 'hrsh7th/vim-vsnip'
 
-" Fuzzy finder
-" Optional
+-- Fuzzy finder
+-- Optional
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tami5/sqlite.lua'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-frecency.nvim'
 
-" Color scheme used in the GIFs!
+-- Color scheme used in the GIFs!
 Plug 'arcticicestudio/nord-vim'
 
-call plug#end()
+vim.call('plug#end')
 
-set updatetime=100
+vim.opt.updatetime = 100
 
-" Display
-set nohlsearch
-set nowrap
-set relativenumber
+-- Display
+vim.opt.hlsearch = false
+vim.opt.wrap = false
+vim.opt.relativenumber = true
 
-" Editing
-set expandtab
-set nosmarttab
-set shiftround
-set shiftwidth=2
-set softtabstop=2
+-- Editing
+vim.opt.expandtab = true
+vim.opt.smarttab = false
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
-" Search
-set ignorecase
-set smartcase
+-- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-" Theme
-set termguicolors
-colorscheme nord
+-- Theme
+vim.opt.termguicolors = true
+vim.cmd('colorscheme nord')
 
-" Leader bindings
-let mapleader = ','
-nnoremap <Leader>v :e $MYVIMRC<CR>
-nnoremap <Leader>f <cmd>Telescope git_files<cr>
-"nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <Leader>b <cmd>Telescope buffers<cr>
-"nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
-"
-" Split-screen navigation
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
-set wmh=0 " Allow splits to be zero-height
+-- Leader bindings
+vim.g.mapleader = ','
+vim.keymap.set('n', '<Leader>v', ':e $MYVIMRC<CR>')
+vim.keymap.set('n', '<Leader>f', '<cmd>Telescope git_files<cr>')
+--nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+vim.keymap.set('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
+--nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
 
-tnoremap <Esc> <C-\><C-n>
+-- Split-screen navigation
+vim.keymap.set('', '<C-J>', '<C-W>j')
+vim.keymap.set('', '<C-K>', '<C-W>k')
+vim.keymap.set('', '<C-H>', '<C-W>h')
+vim.keymap.set('', '<C-L>', '<C-W>l')
+vim.opt.wmh = 0 -- Allow splits to be zero-height
 
-lua <<EOF
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
 require('mini.pairs').setup()
 require('mini.sessions').setup()
 require('mini.surround').setup({
@@ -108,9 +108,7 @@ require('mini.surround').setup({
     update_n_lines = '',
   }
 })
-EOF
 
-lua <<EOF
 local telescope = require('telescope')
 telescope.load_extension('frecency')
 telescope.setup{
@@ -128,22 +126,21 @@ telescope.setup{
     },
   },
 }
-EOF
 
-" Set completeopt to have a better completion experience
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
+-- Set completeopt to have a better completion experience
+-- :help completeopt
+-- menuone: popup even when there's only one match
+-- noinsert: Do not insert text until a selection is made
+-- noselect: Do not select, force user to select one from the menu
+vim.opt.completeopt = 'menuone,noinsert,noselect'
 
-" Avoid showing extra messages when using completion
-set shortmess+=c
+-- Avoid showing extra messages when using completion
+vim.opt.shortmess:append('c')
 
-" Configure LSP through rust-tools.nvim plugin.
-" rust-tools will configure and enable certain LSP features for us.
-" See https://github.com/simrat39/rust-tools.nvim#configuration
-lua <<EOF
+-- Configure LSP through rust-tools.nvim plugin.
+-- rust-tools will configure and enable certain LSP features for us.
+-- See https://github.com/simrat39/rust-tools.nvim#configuration
+
 local lspconfig = require('lspconfig')
 local null_ls = require('null-ls')
 
@@ -255,11 +252,9 @@ null_ls.setup({
     },
     on_attach = on_attach
 })
-EOF
 
-" Setup Completion
-" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
-lua <<EOF
+-- Setup Completion
+-- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require'cmp'
 cmp.setup({
   -- Enable LSP snippets
@@ -292,10 +287,8 @@ cmp.setup({
     { name = 'buffer' },
   },
 })
-EOF
 
-" Setup Treesitter
-lua <<EOF
+-- Setup Treesitter
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
   ensure_installed = {
@@ -343,4 +336,3 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = false,
   },
 }
-EOF
