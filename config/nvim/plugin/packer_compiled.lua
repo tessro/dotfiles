@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/paul/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
   },
+  neovim = {
+    loaded = true,
+    path = "/Users/paul/.local/share/nvim/site/pack/packer/start/neovim",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["nord-vim"] = {
     loaded = true,
     path = "/Users/paul/.local/share/nvim/site/pack/packer/start/nord-vim",

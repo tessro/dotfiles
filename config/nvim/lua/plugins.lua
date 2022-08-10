@@ -57,10 +57,21 @@ return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'neovim/nvim-lspconfig',
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+    {
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+    {
+      'simrat39/rust-tools.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+  }
 
   -- Snippets
   use 'hrsh7th/vim-vsnip'
