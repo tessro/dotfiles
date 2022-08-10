@@ -8,9 +8,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-" Editing
-Plug 'tpope/vim-surround'
-
 " Git
 Plug 'airblade/vim-gitgutter'
 
@@ -96,6 +93,10 @@ map <C-L> <C-W>l
 set wmh=0 " Allow splits to be zero-height
 
 tnoremap <Esc> <C-\><C-n>
+
+lua <<EOF
+require('mini.surround').setup()
+EOF
 
 lua <<EOF
 local telescope = require('telescope')
