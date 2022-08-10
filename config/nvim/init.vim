@@ -13,6 +13,13 @@ Plug 'airblade/vim-gitgutter'
 
 " Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" TypeScript
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
 " Completion framework
 Plug 'hrsh7th/nvim-cmp'
@@ -107,9 +114,6 @@ telescope.setup{
 }
 EOF
 
-" Format on save
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
-
 " Set completeopt to have a better completion experience
 " :help completeopt
 " menuone: popup even when there's only one match
@@ -124,7 +128,8 @@ set shortmess+=c
 " rust-tools will configure and enable certain LSP features for us.
 " See https://github.com/simrat39/rust-tools.nvim#configuration
 lua <<EOF
-local nvim_lsp = require'lspconfig'
+local lspconfig = require('lspconfig')
+local null_ls = require('null-ls')
 
 local opts = {
     -- rust-tools
@@ -136,9 +141,9 @@ local opts = {
     -- nvim-lspconfig
     server = {
         settings = {
-            ["rust-analyzer"] = {
+            ['rust-analyzer'] = {
                 checkOnSave = {
-                    command = "clippy"
+                    command = 'clippy'
                 },
             }
         }
@@ -153,6 +158,7 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', 'dm', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
@@ -164,6 +170,12 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    -- vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
+    -- vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
+    -- vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, bufopts)
+    -- vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
+    -- vim.keymap.set('i', '<C-x><C-x>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -180,20 +192,54 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  end
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'tsserver' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
+lspconfig.prismals.setup({})
+
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+})
+
+lspconfig.tsserver.setup({
+    on_attach = function(client, bufnr)
+        -- disable formatting, we'll use Prettier
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>', bufopts)
+        vim.keymap.set('n', 'gi', ':TSLspRenameFile<CR>', bufopts)
+        vim.keymap.set('n', 'go', ':TSLspImportAll<CR>', bufopts)
+
+        on_attach(client, bufnr)
+    end,
+})
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint_d.with({
+            prefer_local = "node_modules/.bin",
+        }),
+        null_ls.builtins.code_actions.eslint_d.with({
+            prefer_local = "node_modules/.bin",
+        }),
+        null_ls.builtins.formatting.prettier.with({
+            prefer_local = "node_modules/.bin",
+        }),
+        null_ls.builtins.formatting.sqlfluff.with({
+            extra_args = { "--dialect", "sqlite" },
+        }),
+    },
+    on_attach = on_attach
+})
 EOF
 
 " Setup Completion
@@ -231,4 +277,55 @@ cmp.setup({
     { name = 'buffer' },
   },
 })
+EOF
+
+" Setup Treesitter
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    "bash",
+    "c",
+    "css",
+    "dockerfile",
+    "go",
+    "graphql",
+    "html",
+    "json",
+    "lua",
+    "make",
+    "prisma",
+    "python",
+    "rust",
+    "sql",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    --disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
