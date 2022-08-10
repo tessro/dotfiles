@@ -54,7 +54,6 @@ require('mini.surround').setup({
 })
 
 local telescope = require('telescope')
-telescope.load_extension('frecency')
 telescope.setup{
   defaults = {
     mappings = {
