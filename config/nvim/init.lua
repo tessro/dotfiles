@@ -1,4 +1,4 @@
-require('packer_init')
+require('plugins')
 
 vim.opt.updatetime = 100
 
