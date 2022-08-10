@@ -1,3 +1,11 @@
+-- Autocommand that resyncs plugins whenever this file is saved
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost packer_init.lua source <afile> | PackerSync
+  augroup end
+]]
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
