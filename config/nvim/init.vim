@@ -1,5 +1,8 @@
 call plug#begin()
 
+" Many utilities
+Plug 'echasnovski/mini.nvim'
+
 " Fuzzy find
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
