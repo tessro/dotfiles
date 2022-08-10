@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
 
   -- Color schemes
   use 'arcticicestudio/nord-vim'
+  use 'rose-pine/neovim'
 
   -- Many utilities
   use 'echasnovski/mini.nvim'
