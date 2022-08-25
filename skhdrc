@@ -44,4 +44,19 @@ alt - x : yabai -m space --mirror x-axis
 
 # change layout of desktop
 ctrl + alt - z : yabai -m space --layout bsp
+ctrl + alt - t : yabai -m space --layout stack
 ctrl + alt - x : yabai -m space --layout float
+
+# forward ('`')
+alt - 0x32 : yabai -m query --spaces --space \
+  | jq -re '.index' \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(.minimized != 1 and .title != "Mouse Highlight Overlay")) | sort_by(.display, .frame.y, .frame.x, .id) | reverse | nth(index(map(select(."has-focus" == true))) - 1).id' \
+  | xargs -I{} yabai -m window --focus {}
+
+# backward ('`')
+shift + alt - 0x32 : yabai -m query --spaces --space \
+  | jq -re '.index' \
+  | xargs -I{} yabai -m query --windows --space {} \
+  | jq -sre 'add | map(select(.minimized != 1 and .title != "Mouse Highlight Overlay")) | sort_by(.display, .frame.y, .frame.y, .id) | nth(index(map(select(."has-focus" == true))) - 1).id' \
+  | xargs -I{} yabai -m window --focus {}
