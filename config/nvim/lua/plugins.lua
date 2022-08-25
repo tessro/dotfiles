@@ -95,4 +95,12 @@ return require('packer').startup(function(use)
       require('plugins.treesitter')
     end
   }
+
+  -- Copilot
+  use {
+    'github/copilot.vim',
+    config = function()
+      require('plugins.copilot')
+    end
+  }
 end)
