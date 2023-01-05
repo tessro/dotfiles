@@ -5,15 +5,6 @@ local types = require('cmp.types')
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 cmp.setup({
-  completion = {
-    -- Override default behavior, which also triggers on InsertEnter.
-    -- InsertEnter is annoying because it can cause autocompletion when
-    -- `s` is pressed for substitution.
-    autocomplete = {
-      types.cmp.TriggerEvent.TextChanged,
-    }
-  },
-
   -- Enable LSP snippets
   snippet = {
     expand = function(args)
