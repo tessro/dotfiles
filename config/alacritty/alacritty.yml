@@ -1,2 +1,6 @@
 key_bindings:
   - { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+
+window:
+  startup_mode: Maximized
+  decorations: none
