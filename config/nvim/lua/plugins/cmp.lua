@@ -1,6 +1,5 @@
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 local cmp = require('cmp')
-local types = require('cmp.types')
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
