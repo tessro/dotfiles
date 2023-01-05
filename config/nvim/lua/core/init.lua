@@ -22,7 +22,7 @@ vim.cmd('colorscheme nord')
 
 -- Leader bindings
 vim.g.mapleader = ','
-vim.keymap.set('n', '<Leader>v', ':e $MYVIMRC<CR>')
+vim.keymap.set('n', '<Leader>v', ':e ~/.config/nvim/lua/core/init.lua<CR>')
 vim.keymap.set('n', '<Leader>f', '<cmd>Telescope find_files<cr>')
 vim.keymap.set('n', '<Leader>g', '<cmd>Telescope live_grep<cr>')
 vim.keymap.set('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
