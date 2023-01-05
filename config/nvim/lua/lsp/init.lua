@@ -41,7 +41,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   -- vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
   -- vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
@@ -111,7 +111,7 @@ lspconfig.tsserver.setup({
     ts_utils.setup({})
     ts_utils.setup_client(client)
 
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>', bufopts)
     vim.keymap.set('n', 'gi', ':TSLspRenameFile<CR>', bufopts)
     vim.keymap.set('n', 'go', ':TSLspImportAll<CR>', bufopts)
