@@ -37,13 +37,6 @@ vim.opt.wmh = 0 -- Allow splits to be zero-height
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
--- Set completeopt to have a better completion experience
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force user to select one from the menu
-vim.opt.completeopt = 'menuone,noinsert,noselect'
-
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess:append('c')
 
