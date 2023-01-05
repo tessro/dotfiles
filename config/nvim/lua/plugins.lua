@@ -98,9 +98,19 @@ return require('packer').startup(function(use)
 
   -- Copilot
   use {
-    'github/copilot.vim',
+    'zbirenbaum/copilot.lua',
+    event = 'VimEnter',
     config = function()
-      require('plugins.copilot')
+      vim.defer_fn(function()
+        require('plugins.copilot')
+      end, 100)
+    end
+  }
+  use {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('copilot_cmp').setup()
     end
   }
 end)

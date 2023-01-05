@@ -26,6 +26,7 @@ cmp.setup({
 
   -- Installed sources
   sources = {
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
