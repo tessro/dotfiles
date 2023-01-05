@@ -114,9 +114,6 @@ null_ls.setup({
         null_ls.builtins.formatting.prettier.with({
             prefer_local = "node_modules/.bin",
         }),
-        null_ls.builtins.formatting.sqlfluff.with({
-            extra_args = { "--dialect", "sqlite" },
-        }),
     },
     on_attach = on_attach
 })
