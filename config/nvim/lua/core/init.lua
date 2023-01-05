@@ -24,7 +24,7 @@ vim.cmd('colorscheme nord')
 vim.g.mapleader = ','
 vim.keymap.set('n', '<Leader>v', ':e $MYVIMRC<CR>')
 vim.keymap.set('n', '<Leader>f', '<cmd>Telescope git_files<cr>')
---nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+vim.keymap.set('n', '<Leader>g', '<cmd>Telescope live_grep<cr>')
 vim.keymap.set('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
 vim.keymap.set('n', '<Leader>h', '<cmd>Telescope help_tags<cr>')
 
