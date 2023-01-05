@@ -1,3 +1,4 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 require('rust-tools').setup({
@@ -78,16 +79,21 @@ local on_attach = function(client, bufnr)
 end
 
 lspconfig.gopls.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
 })
 
-lspconfig.prismals.setup({})
+lspconfig.prismals.setup({
+  capabilities = capabilities,
+})
 
 lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.tsserver.setup({
+    capabilities = capabilities,
     on_attach = function(client, bufnr)
         local ts_utils = require("nvim-lsp-ts-utils")
         ts_utils.setup({})
@@ -104,6 +110,7 @@ lspconfig.tsserver.setup({
 
 local null_ls = require('null-ls')
 null_ls.setup({
+    capabilities = capabilities,
     sources = {
         null_ls.builtins.diagnostics.eslint_d.with({
             prefer_local = "node_modules/.bin",
