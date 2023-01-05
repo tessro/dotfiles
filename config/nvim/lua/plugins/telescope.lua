@@ -11,5 +11,8 @@ require('telescope').setup({
       sort_mru = true,
       ignore_current_buffer = true,
     },
+    help_tags = {
+      layout_strategy = 'vertical',
+    },
   },
 })

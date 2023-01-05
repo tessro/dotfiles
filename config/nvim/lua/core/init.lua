@@ -26,7 +26,7 @@ vim.keymap.set('n', '<Leader>v', ':e $MYVIMRC<CR>')
 vim.keymap.set('n', '<Leader>f', '<cmd>Telescope git_files<cr>')
 --nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
 vim.keymap.set('n', '<Leader>b', '<cmd>Telescope buffers<cr>')
---nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
+vim.keymap.set('n', '<Leader>h', '<cmd>Telescope help_tags<cr>')
 
 -- Split-screen navigation
 vim.keymap.set('', '<C-J>', '<C-W>j')
