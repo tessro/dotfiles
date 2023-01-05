@@ -74,7 +74,12 @@ local on_attach = function(client, bufnr)
       end,
     })
   end
+
 end
+
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+})
 
 lspconfig.prismals.setup({})
 
