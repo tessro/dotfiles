@@ -104,20 +104,18 @@ lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
 })
 
-lspconfig.tsserver.setup({
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({})
-    ts_utils.setup_client(client)
+require('typescript').setup({
+  server = {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
+      vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>', bufopts)
+      vim.keymap.set('n', 'gi', ':TSLspRenameFile<CR>', bufopts)
+      vim.keymap.set('n', 'go', ':TSLspImportAll<CR>', bufopts)
 
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>', bufopts)
-    vim.keymap.set('n', 'gi', ':TSLspRenameFile<CR>', bufopts)
-    vim.keymap.set('n', 'go', ':TSLspImportAll<CR>', bufopts)
-
-    on_attach(client, bufnr)
-  end,
+      on_attach(client, bufnr)
+    end,
+  }
 })
 
 local null_ls = require('null-ls')

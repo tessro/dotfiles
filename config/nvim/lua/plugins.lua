@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
       requires = 'nvim-lua/plenary.nvim',
     },
     {
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      'jose-elias-alvarez/typescript.nvim',
       requires = 'nvim-lua/plenary.nvim',
     },
     {
