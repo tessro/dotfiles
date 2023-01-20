@@ -104,14 +104,15 @@ lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
 })
 
-require('typescript').setup({
+local typescript = require('typescript')
+typescript.setup({
   server = {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>', bufopts)
-      vim.keymap.set('n', 'gi', ':TSLspRenameFile<CR>', bufopts)
-      vim.keymap.set('n', 'go', ':TSLspImportAll<CR>', bufopts)
+      vim.keymap.set('n', 'go', ':TypescriptAddMissingImports<CR>', bufopts)
+      vim.keymap.set('n', 'gO', ':TypescriptOrganizeImports<CR>', bufopts)
+      vim.keymap.set('n', 'gI', ':TypescriptRenameFile<CR>', bufopts)
 
       on_attach(client, bufnr)
     end,
@@ -131,6 +132,7 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier.with({
       prefer_local = "node_modules/.bin",
     }),
+    require('typescript.extensions.null-ls.code-actions'),
   },
   on_attach = on_attach
 })
