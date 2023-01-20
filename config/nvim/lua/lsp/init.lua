@@ -122,10 +122,10 @@ local null_ls = require('null-ls')
 null_ls.setup({
   capabilities = capabilities,
   sources = {
-    null_ls.builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
-    null_ls.builtins.code_actions.eslint_d.with({
+    null_ls.builtins.code_actions.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
     null_ls.builtins.formatting.prettier.with({
