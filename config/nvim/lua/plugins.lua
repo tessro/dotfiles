@@ -106,7 +106,7 @@ return require('packer').startup(function(use)
     'zbirenbaum/copilot-cmp',
     after = { 'copilot.lua' },
     config = function()
-      require('copilot_cmp').setup()
+      require('plugins.copilot_cmp')
     end
   }
 end)
