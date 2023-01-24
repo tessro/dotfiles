@@ -52,11 +52,7 @@ return require('packer').startup(function(use)
     },
     {
       'nvim-telescope/telescope-frecency.nvim',
-      after = 'telescope.nvim',
-      config = function()
-        require('telescope').load_extension('frecency')
-      end,
-      requires = { 'tami5/sqlite.lua' },
+      requires = { 'kkharji/sqlite.lua' },
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
