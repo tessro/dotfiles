@@ -29,6 +29,9 @@ if which gpgconf >/dev/null ; then
   gpgconf --launch gpg-agent
 fi
 
+# 1Password CLI
+source ~/.config/op/plugins.sh
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
