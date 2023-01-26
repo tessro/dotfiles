@@ -63,6 +63,9 @@ return require('packer').startup(function(use)
   -- Git
   use 'airblade/vim-gitgutter'
 
+  -- Just
+  use 'NoahTheDuke/vim-just'
+
   -- LSP
   use {
     'neovim/nvim-lspconfig',

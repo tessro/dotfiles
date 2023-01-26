@@ -202,6 +202,11 @@ _G.packer_plugins = {
     path = "/Users/paul/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
+  ["vim-just"] = {
+    loaded = true,
+    path = "/Users/paul/.local/share/nvim/site/pack/packer/start/vim-just",
+    url = "https://github.com/NoahTheDuke/vim-just"
+  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/Users/paul/.local/share/nvim/site/pack/packer/start/vim-vsnip",
