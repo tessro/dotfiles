@@ -76,10 +76,18 @@ local on_attach = function(client, bufnr)
 
 end
 
+--
+-- Go
+--
+
 lspconfig.gopls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+
+--
+-- Lua
+--
 
 lspconfig.sumneko_lua.setup({
   capabilities = capabilities,
@@ -93,9 +101,9 @@ lspconfig.sumneko_lua.setup({
   }
 })
 
-lspconfig.prismals.setup({
-  capabilities = capabilities,
-})
+--
+-- Python
+--
 
 lspconfig.pyright.setup({
   capabilities = capabilities,
@@ -107,10 +115,18 @@ lspconfig.ruff_lsp.setup({
   on_attach = on_attach,
 })
 
+--
+-- Rust
+--
+
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+
+--
+-- TypeScript
+--
 
 lspconfig.eslint.setup({
   capabilities = capabilities,
@@ -129,6 +145,22 @@ lspconfig.eslint.setup({
   end,
 })
 
+local null_ls = require('null-ls')
+null_ls.setup({
+  capabilities = capabilities,
+  sources = {
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = "node_modules/.bin",
+    }),
+    require('typescript.extensions.null-ls.code-actions'),
+  },
+  on_attach = on_attach
+})
+
+lspconfig.prismals.setup({
+  capabilities = capabilities,
+})
+
 local typescript = require('typescript')
 typescript.setup({
   server = {
@@ -142,16 +174,4 @@ typescript.setup({
       on_attach(client, bufnr)
     end,
   }
-})
-
-local null_ls = require('null-ls')
-null_ls.setup({
-  capabilities = capabilities,
-  sources = {
-    null_ls.builtins.formatting.prettier.with({
-      prefer_local = "node_modules/.bin",
-    }),
-    require('typescript.extensions.null-ls.code-actions'),
-  },
-  on_attach = on_attach
 })
