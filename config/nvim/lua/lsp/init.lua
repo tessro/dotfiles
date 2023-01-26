@@ -24,7 +24,8 @@ local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
       -- disable tsserver-based formatting (in favor of Prettier via `null-ls`)
-      return client.name ~= "tsserver"
+      -- also disable eslint, since it races prettier and causes nvim errors
+      return client.name ~= "tsserver" and client.name ~= "eslint"
     end,
     bufnr = bufnr,
   })
@@ -104,6 +105,23 @@ lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
 })
 
+lspconfig.eslint.setup({
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gl', ':EslintFixAll<CR>', bufopts)
+
+    on_attach(client, bufnr)
+  end,
+  root_dir = function(fname)
+    return lspconfig.util.root_pattern(
+      '.eslintrc.js',
+      '.eslintrc.cjs',
+      '.eslintrc.json'
+    )(fname) or lspconfig.util.root_pattern('package.json')(fname)
+  end,
+})
+
 local typescript = require('typescript')
 typescript.setup({
   server = {
@@ -123,12 +141,6 @@ local null_ls = require('null-ls')
 null_ls.setup({
   capabilities = capabilities,
   sources = {
-    null_ls.builtins.diagnostics.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
-    null_ls.builtins.code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
     null_ls.builtins.formatting.prettier.with({
       prefer_local = "node_modules/.bin",
     }),
