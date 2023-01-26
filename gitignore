@@ -1,3 +1,4 @@
 .DS_Store
+.op
 xcuserdata
 config/initializers/remote_debugger.hidden.rb
