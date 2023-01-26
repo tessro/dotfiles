@@ -77,6 +77,26 @@ local on_attach = function(client, bufnr)
 end
 
 --
+-- null-ls
+--
+local null_ls = require('null-ls')
+null_ls.setup({
+  capabilities = capabilities,
+  sources = {
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = "node_modules/.bin",
+    }),
+    require('typescript.extensions.null-ls.code-actions'),
+  },
+  on_attach = on_attach
+})
+
+lspconfig.prismals.setup({
+  capabilities = capabilities,
+})
+
+--
 -- Go
 --
 
@@ -143,22 +163,6 @@ lspconfig.eslint.setup({
       '.eslintrc.json'
     )(fname) or lspconfig.util.root_pattern('package.json')(fname)
   end,
-})
-
-local null_ls = require('null-ls')
-null_ls.setup({
-  capabilities = capabilities,
-  sources = {
-    null_ls.builtins.formatting.prettier.with({
-      prefer_local = "node_modules/.bin",
-    }),
-    require('typescript.extensions.null-ls.code-actions'),
-  },
-  on_attach = on_attach
-})
-
-lspconfig.prismals.setup({
-  capabilities = capabilities,
 })
 
 local typescript = require('typescript')
