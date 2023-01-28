@@ -150,6 +150,15 @@ lspconfig.rust_analyzer.setup({
 })
 
 --
+-- TOML
+--
+
+lspconfig.taplo.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+--
 -- TypeScript
 --
 
