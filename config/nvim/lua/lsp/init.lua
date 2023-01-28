@@ -128,6 +128,11 @@ lspconfig.sumneko_lua.setup({
 lspconfig.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    python = {
+      venvPath = "~/.pyenv/versions",
+    }
+  }
 })
 
 lspconfig.ruff_lsp.setup({
