@@ -52,6 +52,8 @@ if [[ $OSTYPE == darwin* ]] ; then source ~/.zshrc.darwin ; fi
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
 if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
+#if which pyenv >/dev/null ; then eval "$(pyenv init -)" ; fi
+#if which pyenv-virtualenv >/dev/null ; then eval "$(pyenv virtualenv-init -)" ; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
