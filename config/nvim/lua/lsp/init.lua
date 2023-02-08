@@ -117,7 +117,14 @@ lspconfig.sumneko_lua.setup({
       diagnostics = {
         globals = { 'vim' },
       },
-    }
+      format = {
+        defaultConfig = {
+          -- workaround for https://github.com/LuaLS/lua-language-server/issues/1068
+          -- see if this is fixed in versions after 3.6.10
+          continuation_indent = "2",
+        }
+      },
+    },
   }
 })
 
