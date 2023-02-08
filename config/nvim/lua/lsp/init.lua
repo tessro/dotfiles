@@ -6,7 +6,6 @@ require('rust-tools').setup({
   tools = {
     autoSetHints = true,
   },
-
   -- nvim-lspconfig
   server = {
     settings = {
@@ -73,7 +72,6 @@ local on_attach = function(client, bufnr)
       end,
     })
   end
-
 end
 
 --
@@ -179,10 +177,10 @@ lspconfig.eslint.setup({
   end,
   root_dir = function(fname)
     return lspconfig.util.root_pattern(
-      '.eslintrc.js',
-      '.eslintrc.cjs',
-      '.eslintrc.json'
-    )(fname) or lspconfig.util.root_pattern('package.json')(fname)
+        '.eslintrc.js',
+        '.eslintrc.cjs',
+        '.eslintrc.json'
+      )(fname) or lspconfig.util.root_pattern('package.json')(fname)
   end,
 })
 
