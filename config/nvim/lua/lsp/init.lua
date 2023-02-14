@@ -1,4 +1,5 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_format = require('lsp-format')
 local lspconfig = require('lspconfig')
 
 require('rust-tools').setup({
@@ -18,24 +19,17 @@ require('rust-tools').setup({
   },
 })
 
--- this callback is invoked on attach, when the client supports formatting
-local lsp_formatting = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      -- disable tsserver-based formatting (in favor of Prettier via `null-ls`)
-      -- also disable eslint, since it races prettier and causes nvim errors
-      return client.name ~= "tsserver" and client.name ~= "eslint"
-    end,
-    bufnr = bufnr,
-  })
-end
-
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+lsp_format.setup({
+  -- disable tsserver-based formatting (in favor of Prettier via `null-ls`)
+  -- also disable eslint, since it races prettier and causes nvim errors
+  exclude = { 'eslint', 'tsserver' }
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  lsp_format.on_attach(client)
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -61,17 +55,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        lsp_formatting(bufnr)
-      end,
-    })
-  end
 end
 
 --
