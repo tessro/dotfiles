@@ -7,112 +7,114 @@ vim.cmd [[
 ]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself!
-    use 'wbthomason/packer.nvim'
+  -- Packer can manage itself!
+  use 'wbthomason/packer.nvim'
 
-    -- Color schemes
-    use 'arcticicestudio/nord-vim'
-    use 'rose-pine/neovim'
+  -- Color schemes
+  use 'arcticicestudio/nord-vim'
+  use 'rose-pine/neovim'
 
-    -- Many utilities
-    use {
-      'echasnovski/mini.nvim',
-      config = function()
-        require('plugins.mini')
-      end,
-    }
+  -- Many utilities
+  use {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('plugins.mini')
+    end,
+  }
 
-    -- Autocomplete
-    use {
-      'hrsh7th/nvim-cmp',
+  -- Autocomplete
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-path',
+    },
+    config = function()
+      require('plugins.cmp')
+    end,
+  }
+
+  -- Fuzzy find
+  use {
+    {
+      'nvim-telescope/telescope.nvim',
       requires = {
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-vsnip',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-buffer',
+        'nvim-lua/popup.nvim',
+        'nvim-lua/plenary.nvim',
+        'telescope-frecency.nvim',
+        'telescope-fzf-native.nvim',
       },
       config = function()
-        require('plugins.cmp')
+        require('plugins.telescope')
       end,
-    }
+    },
+    {
+      'nvim-telescope/telescope-frecency.nvim',
+      requires = { 'kkharji/sqlite.lua' },
+    },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run =
+      'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    },
+  }
 
-    -- Fuzzy find
-    use {
-      {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-          'nvim-lua/popup.nvim',
-          'nvim-lua/plenary.nvim',
-          'telescope-frecency.nvim',
-          'telescope-fzf-native.nvim',
-        },
-        config = function()
-          require('plugins.telescope')
-        end,
-      },
-      {
-        'nvim-telescope/telescope-frecency.nvim',
-        requires = { 'kkharji/sqlite.lua' },
-      },
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-      },
-    }
+  -- Git
+  use 'airblade/vim-gitgutter'
 
-    -- Git
-    use 'airblade/vim-gitgutter'
+  -- Just
+  use 'NoahTheDuke/vim-just'
 
-    -- Just
-    use 'NoahTheDuke/vim-just'
+  -- LSP
+  use {
+    'neovim/nvim-lspconfig',
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+    {
+      'jose-elias-alvarez/typescript.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+    {
+      'simrat39/rust-tools.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+  }
 
-    -- LSP
-    use {
-      'neovim/nvim-lspconfig',
-      {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-      },
-      {
-        'jose-elias-alvarez/typescript.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-      },
-      {
-        'simrat39/rust-tools.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-      },
-    }
+  -- LSP formatting
+  use "lukas-reineke/lsp-format.nvim"
 
-    -- LSP formatting
-    use "lukas-reineke/lsp-format.nvim"
+  -- Snippets
+  use 'hrsh7th/vim-vsnip'
 
-    -- Snippets
-    use 'hrsh7th/vim-vsnip'
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('plugins.treesitter')
+    end
+  }
 
-    -- Treesitter
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      config = function()
-        require('plugins.treesitter')
-      end
-    }
-
-    -- Copilot
-    use {
-      'zbirenbaum/copilot.lua',
-      event = 'VimEnter',
-      config = function()
-        vim.defer_fn(function()
-          require('plugins.copilot')
-        end, 100)
-      end
-    }
-    use {
-      'zbirenbaum/copilot-cmp',
-      after = { 'copilot.lua' },
-      config = function()
-        require('plugins.copilot_cmp')
-      end
-    }
-  end)
+  -- Copilot
+  use {
+    'zbirenbaum/copilot.lua',
+    event = 'VimEnter',
+    config = function()
+      vim.defer_fn(function()
+        require('plugins.copilot')
+      end, 100)
+    end
+  }
+  use {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('plugins.copilot_cmp')
+    end
+  }
+end)
