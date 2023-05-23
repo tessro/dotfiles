@@ -85,9 +85,6 @@ return require('packer').startup(function(use)
     },
   }
 
-  -- LSP formatting
-  use "lukas-reineke/lsp-format.nvim"
-
   -- Snippets
   use 'hrsh7th/vim-vsnip'
 

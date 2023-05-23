@@ -118,11 +118,6 @@ _G.packer_plugins = {
     path = "/Users/paul/.local/share/nvim/site/pack/packer/opt/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
   },
-  ["lsp-format.nvim"] = {
-    loaded = true,
-    path = "/Users/paul/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
-    url = "https://github.com/lukas-reineke/lsp-format.nvim"
-  },
   ["mini.nvim"] = {
     config = { "\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17plugins.mini\frequire\0" },
     loaded = true,
