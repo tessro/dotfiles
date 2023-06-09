@@ -1,9 +1,9 @@
 [submodule "vim/pack/vendor/start/AutoTag"]
 	path = vim/pack/vendor/start/AutoTag
-	url = git://github.com/vim-scripts/AutoTag.git
+	url = https://github.com/vim-scripts/AutoTag.git
 [submodule "vim/pack/vendor/start/vim-turbux"]
 	path = vim/pack/vendor/start/vim-turbux
-	url = git://github.com/jgdavey/vim-turbux.git
+	url = https://github.com/jgdavey/vim-turbux.git
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
@@ -30,76 +30,76 @@
 	url = https://github.com/Valloric/YouCompleteMe
 [submodule "vim/pack/vendor/start/lightline.vim"]
 	path = vim/pack/vendor/start/lightline.vim
-	url = git://github.com/itchyny/lightline.vim.git
+	url = https://github.com/itchyny/lightline.vim.git
 [submodule "vim/pack/vendor/start/ale"]
 	path = vim/pack/vendor/start/ale
-	url = git://github.com/dense-analysis/ale.git
+	url = https://github.com/dense-analysis/ale.git
 [submodule "vim/pack/vendor/start/lexima.vim"]
 	path = vim/pack/vendor/start/lexima.vim
-	url = git://github.com/cohama/lexima.vim.git
+	url = https://github.com/cohama/lexima.vim.git
 [submodule "vim/pack/vendor/start/vim-prettier"]
 	path = vim/pack/vendor/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier
 [submodule "vim/pack/vendor/start/fzf.vim"]
 	path = vim/pack/vendor/start/fzf.vim
-	url = git://github.com/junegunn/fzf.vim.git
+	url = https://github.com/junegunn/fzf.vim.git
 [submodule "vim/pack/vendor/start/fzf"]
 	path = vim/pack/vendor/start/fzf
-	url = git://github.com/junegunn/fzf.git
+	url = https://github.com/junegunn/fzf.git
 [submodule "vim/pack/vendor/start/eunuch.vim"]
 	path = vim/pack/vendor/start/eunuch.vim
-	url = git://github.com/tpope/vim-eunuch.git
+	url = https://github.com/tpope/vim-eunuch.git
 [submodule "vim/pack/vendor/start/unimpaired.vim"]
 	path = vim/pack/vendor/start/unimpaired.vim
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/pack/vendor/start/vim-terraform"]
 	path = vim/pack/vendor/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
 [submodule "vim/pack/vendor/start/surround.vim"]
 	path = vim/pack/vendor/start/surround.vim
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/pack/vendor/start/base16-vim"]
 	path = vim/pack/vendor/start/base16-vim
-	url = git://github.com/chriskempson/base16-vim.git
+	url = https://github.com/chriskempson/base16-vim.git
 [submodule "vim/pack/vendor/start/gist.vim"]
 	path = vim/pack/vendor/start/gist.vim
-	url = git://github.com/mattn/vim-gist.git
+	url = https://github.com/mattn/vim-gist.git
 [submodule "vim/pack/vendor/start/husk.vim"]
 	path = vim/pack/vendor/start/husk.vim
-	url = git://github.com/vim-utils/vim-husk.git
+	url = https://github.com/vim-utils/vim-husk.git
 [submodule "vim/pack/vendor/start/obsession.vim"]
 	path = vim/pack/vendor/start/obsession.vim
-	url = git://github.com/tpope/vim-obsession.git
+	url = https://github.com/tpope/vim-obsession.git
 [submodule "vim/pack/vendor/start/vim-javascript"]
 	path = vim/pack/vendor/start/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/pack/vendor/start/tabular"]
 	path = vim/pack/vendor/start/tabular
-	url = git://github.com/godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "vim/pack/vendor/start/repeat.vim"]
 	path = vim/pack/vendor/start/repeat.vim
-	url = git://github.com/tpope/vim-repeat.git
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "vim/pack/vendor/start/commentary.vim"]
 	path = vim/pack/vendor/start/commentary.vim
-	url = git://github.com/tpope/vim-commentary.git
+	url = https://github.com/tpope/vim-commentary.git
 [submodule "vim/pack/vendor/start/vim-go"]
 	path = vim/pack/vendor/start/vim-go
-	url = git://github.com/fatih/vim-go.git
+	url = https://github.com/fatih/vim-go.git
 [submodule "vim/pack/vendor/start/rust.vim"]
 	path = vim/pack/vendor/start/rust.vim
-	url = git://github.com/rust-lang/rust.vim.git
+	url = https://github.com/rust-lang/rust.vim.git
 [submodule "vim/pack/vendor/start/vim-graphql"]
 	path = vim/pack/vendor/start/vim-graphql
-	url = git://github.com/jparise/vim-graphql.git
+	url = https://github.com/jparise/vim-graphql.git
 [submodule "vim/pack/vendor/start/vim-cpp-enhanced-highlight"]
 	path = vim/pack/vendor/start/vim-cpp-enhanced-highlight
-	url = git://github.com/octol/vim-cpp-enhanced-highlight.git
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
 [submodule "vim/pack/vendor/start/vim-nearley"]
 	path = vim/pack/vendor/start/vim-nearley
-	url = git://github.com/tjvr/vim-nearley.git
+	url = https://github.com/tjvr/vim-nearley.git
 [submodule "vim/pack/vendor/start/vim-prisma"]
 	path = vim/pack/vendor/start/vim-prisma
-	url = git://github.com/pantharshit00/vim-prisma.git
+	url = https://github.com/pantharshit00/vim-prisma.git
 [submodule "vim/pack/vendor/start/zig.vim"]
 	path = vim/pack/vendor/start/zig.vim
 	url = https://github.com/ziglang/zig.vim
