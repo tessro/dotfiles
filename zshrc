@@ -14,7 +14,7 @@ compinit -D
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
 # Rust
-source $HOME/.cargo/env
+if [[ -s $HOME/.cargo/env ]] ; then source $HOME/.cargo/env ; fi
 
 # Handy
 function mkcd () {
