@@ -10,7 +10,7 @@ font pango:JetBrains Mono 10
 exec --no-startup-id "setxkbmap -option ctrl:nocaps"
 
 # Disable focus-follows-mouse
-focus_follows_mouse no
+#focus_follows_mouse no
 
 # Hide borders when there is only one window
 smart_borders on
