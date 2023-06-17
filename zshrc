@@ -23,10 +23,15 @@ function mkcd () {
 }
 
 # Colorize terminal
-alias ls='ls -G'
-alias ll='ls -lG'
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-export GREP_OPTIONS="--color"
+if [[ $OSTYPE == darwin* ]] ; then
+  alias ls='ls -G'
+  alias ll='ls -lG'
+  export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+else
+  alias ls='ls --color=auto'
+  alias ll='ls -l --color=auto'
+fi
+export GREP_OPTIONS="--color=auto"
 
 # Nicer history
 export HISTSIZE=100000
