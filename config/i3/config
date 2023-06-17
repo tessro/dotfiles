@@ -12,6 +12,9 @@ exec --no-startup-id "setxkbmap -option ctrl:nocaps"
 # Disable focus-follows-mouse
 focus_follows_mouse no
 
+# Hide borders when there is only one window
+smart_borders on
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
