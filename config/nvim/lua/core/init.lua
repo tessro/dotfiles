@@ -23,6 +23,7 @@ vim.cmd('colorscheme nord')
 -- Leader bindings
 vim.g.mapleader = ','
 -- The `vim.fn.expand` is there to support Windows (I haven't checked if Telescope actually needs this)
+vim.keymap.set('n', '<Leader>d', ':Telescope find_files cwd=' .. vim.fn.expand('~/.dotfiles') .. '<cr>')
 vim.keymap.set('n', '<Leader>v', ':Telescope find_files cwd=' .. vim.fn.expand('~/.config/nvim') .. '<cr>')
 vim.keymap.set('n', '<Leader>f', '<cmd>Telescope find_files<cr>')
 vim.keymap.set('n', '<Leader>g', '<cmd>Telescope live_grep<cr>')
