@@ -33,7 +33,8 @@ else
 fi
 export GREP_OPTIONS="--color=auto"
 
-# Nicer history
+# Enable history
+export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
