@@ -70,7 +70,11 @@ return require('packer').startup(function(use)
   }
 
   -- Git
-  use 'airblade/vim-gitgutter'
+  use {
+    'lewis6991/gitsigns.nvim', config = function()
+    require('gitsigns').setup()
+  end,
+  }
 
   -- Just
   use 'NoahTheDuke/vim-just'
