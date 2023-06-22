@@ -62,6 +62,13 @@ return require('packer').startup(function(use)
     },
   }
 
+  -- Terminal
+  use {
+    'akinsho/toggleterm.nvim', tag = '*', config = function()
+    require('toggleterm').setup()
+  end,
+  }
+
   -- Git
   use 'airblade/vim-gitgutter'
 
