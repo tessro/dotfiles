@@ -5,10 +5,36 @@ yabai -m config left_padding    6
 yabai -m config right_padding   6
 yabai -m config window_gap      6
 
+# name spaces
+yabai -m space 1 --label web --layout stack
+yabai -m space 2 --label code
+yabai -m space 3 --label work
+yabai -m space 4 --label social
+yabai -m space 5 --label writing
+
 # float system preferences
-yabai -m rule --add app='^System Information$' manage=off
-yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add app='^System Settings$' manage=off
 
 # float video calls
 yabai -m rule --add app='^Whereby$' manage=off grid=4:4:1:0:2:2
 yabai -m rule --add app='^zoom.us$' manage=off grid=4:4:1:0:2:2
+
+#
+# organize apps
+#
+
+yabai -m rule --add space=web app="^Google Chrome$"
+
+yabai -m rule --add space=code app="^iTerm2$"
+yabai -m rule --add space=code app="^WezTerm$"
+
+yabai -m rule --add space=work app="^Slack$"
+yabai -m rule --add space=work app="^Superhuman$"
+
+yabai -m rule --add space=social app="^Discord$"
+yabai -m rule --add space=social app="^Signal$"
+yabai -m rule --add space=social app="^Spotify$"
+yabai -m rule --add space=social app="^WhatsApp$"
+
+yabai -m rule --add space=writing app="^Notion$"
+yabai -m rule --add space=writing app="^Obsidian$"
