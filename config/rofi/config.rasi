@@ -1,0 +1,8 @@
+configuration {
+  modi: "combi,window,drun,ssh";
+  font: "JetBrains Mono 18";
+  combi-modi: "window,drun";
+  // they look like shit (tiny)
+  //show-icons: true;
+}
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
