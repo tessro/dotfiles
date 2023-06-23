@@ -64,9 +64,11 @@ return require('packer').startup(function(use)
 
   -- Terminal
   use {
-    'akinsho/toggleterm.nvim', tag = '*', config = function()
-    require('toggleterm').setup()
-  end,
+    'akinsho/toggleterm.nvim',
+    tag = '*',
+    config = function()
+      require('plugins.toggleterm')
+    end,
   }
 
   -- Git
