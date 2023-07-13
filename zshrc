@@ -59,6 +59,7 @@ export GPG_TTY="$(tty)"
 if which hub >/dev/null ; then alias git=hub ; fi
 
 if [[ $OSTYPE == darwin* ]] ; then source ~/.zshrc.darwin ; fi
+if uname -r | grep -q microsoft-standard-WSL2 ; then source ~/.zshrc.wsl2 ; fi
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
 if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi

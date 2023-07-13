@@ -1,0 +1,38 @@
+pageant_bin=/mnt/c/Users/paul/Applications/bin/wsl2-ssh-pageant.exe
+
+function forward_gpg_socket() {
+  local name=$1
+  local src_path='"'"C:/Users/paul/AppData/Local/gnupg"'"'
+  local dest_path="$HOME/.gnupg/$name"
+
+  # Note: this `grep` has a ' ' after the search term because `S.gpg-agent` is a
+  # prefix of `S.gpg-agent.extra`, which would incorrectly match.
+  if ! ss -a | grep -q "$dest_path " ; then
+    rm -f $dest_path
+    exec_command="$pageant_bin --verbose --gpg $name --gpgConfigBasepath $src_path"
+    setsid nohup socat UNIX-LISTEN:$dest_path,fork EXEC:"$exec_command" >/dev/null 2>&1 &
+  fi
+}
+
+function forward_ssh_socket() {
+  # `export` causes this to be picked up by subshells. Without it,
+  # $SSH_AUTH_SOCK isn't read by tools like `ssh-add`
+  export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+
+  if ! ss -a | grep -q $SSH_AUTH_SOCK ; then
+    rm -f $SSH_AUTH_SOCK
+    setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$pageant_bin" >/dev/null 2>&1 &
+  fi
+}
+
+# If we're in a VS Code Remote Container, all of this is set up for us.
+# (We can't do it ourselves anyway, since we don't have filesystem access.)
+if [ -z $REMOTE_CONTAINERS ]; then
+  forward_gpg_socket "S.gpg-agent"
+  forward_gpg_socket "S.gpg-agent.extra"
+  forward_ssh_socket
+fi
+
+unset pageant_bin
+
+# vi:syntax=bash:
