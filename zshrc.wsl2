@@ -10,7 +10,7 @@ function forward_gpg_socket() {
   if ! ss -a | grep -q "$dest_path " ; then
     rm -f $dest_path
     exec_command="$pageant_bin --verbose --gpg $name --gpgConfigBasepath $src_path"
-    setsid nohup socat UNIX-LISTEN:$dest_path,fork EXEC:"$exec_command" >/dev/null 2>&1 &
+    setsid socat UNIX-LISTEN:$dest_path,fork EXEC:"$exec_command"
   fi
 }
 
@@ -21,7 +21,7 @@ function forward_ssh_socket() {
 
   if ! ss -a | grep -q $SSH_AUTH_SOCK ; then
     rm -f $SSH_AUTH_SOCK
-    setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$pageant_bin" >/dev/null 2>&1 &
+    setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"$pageant_bin"
   fi
 }
 
