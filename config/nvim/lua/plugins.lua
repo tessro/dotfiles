@@ -90,8 +90,7 @@ return require('packer').startup(function(use)
       requires = 'nvim-lua/plenary.nvim',
     },
     {
-      'jose-elias-alvarez/typescript.nvim',
-      requires = 'nvim-lua/plenary.nvim',
+      'yioneko/nvim-vtsls',
     },
     {
       'simrat39/rust-tools.nvim',

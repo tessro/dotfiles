@@ -85,7 +85,6 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier.with({
       prefer_local = "node_modules/.bin",
     }),
-    require('typescript.extensions.null-ls.code-actions'),
   },
   on_attach = on_attach
 })
@@ -184,15 +183,18 @@ lspconfig.eslint.setup({
   end,
 })
 
-local typescript = require('typescript')
-typescript.setup({
+local vtsls = require("vtsls")
+-- set default server config, optional but recommended
+require("lspconfig.configs").vtsls = vtsls.lspconfig
+
+lspconfig.vtsls.setup({
   server = {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set('n', 'go', ':TypescriptAddMissingImports<CR>', bufopts)
-      vim.keymap.set('n', 'gO', ':TypescriptOrganizeImports<CR>', bufopts)
-      vim.keymap.set('n', 'gI', ':TypescriptRenameFile<CR>', bufopts)
+      vim.keymap.set('n', 'go', ':VtsExec add_missing_imports<CR>', bufopts)
+      vim.keymap.set('n', 'gO', ':VtsExec organize_imports<CR>', bufopts)
+      vim.keymap.set('n', 'gI', ':VtsExec rename_file<CR>', bufopts)
 
       on_attach(client, bufnr)
     end,

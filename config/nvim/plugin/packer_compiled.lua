@@ -227,6 +227,11 @@ _G.packer_plugins = {
 >>>>>>> fbdd94c (nvim: update plugins)
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-vtsls"] = {
+    loaded = true,
+    path = "/Users/tess/.local/share/nvim/site/pack/packer/start/nvim-vtsls",
+    url = "https://github.com/yioneko/nvim-vtsls"
+  },
   ["packer.nvim"] = {
     loaded = true,
 <<<<<<< HEAD
@@ -310,6 +315,7 @@ _G.packer_plugins = {
 >>>>>>> fbdd94c (nvim: update plugins)
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+<<<<<<< HEAD
   ["typescript.nvim"] = {
     loaded = true,
 <<<<<<< HEAD
@@ -319,6 +325,8 @@ _G.packer_plugins = {
 >>>>>>> fbdd94c (nvim: update plugins)
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
+=======
+>>>>>>> 9c45334 (nvim: replace typescript.nvim with vtsls/nvim-vtsls)
   ["vim-just"] = {
     loaded = true,
 <<<<<<< HEAD
@@ -361,6 +369,7 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
+<<<<<<< HEAD
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
@@ -370,18 +379,30 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
+=======
+>>>>>>> 9c45334 (nvim: replace typescript.nvim with vtsls/nvim-vtsls)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.cmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
+<<<<<<< HEAD
+=======
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+>>>>>>> 9c45334 (nvim: replace typescript.nvim with vtsls/nvim-vtsls)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
+<<<<<<< HEAD
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+=======
+>>>>>>> 9c45334 (nvim: replace typescript.nvim with vtsls/nvim-vtsls)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
