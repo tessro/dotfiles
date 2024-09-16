@@ -3,3 +3,4 @@
 .venv
 xcuserdata
 config/initializers/remote_debugger.hidden.rb
+Session.vim
