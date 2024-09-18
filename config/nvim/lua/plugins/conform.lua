@@ -2,6 +2,19 @@ local conform = require('conform')
 
 conform.setup({})
 
+--
+-- Format on save
+--
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    conform.format({ bufnr = args.buf })
+  end,
+})
+
+--
+-- Format command
+--
 vim.api.nvim_create_user_command("Format", function(args)
   local range = nil
   if args.count ~= -1 then
