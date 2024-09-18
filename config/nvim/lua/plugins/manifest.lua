@@ -27,6 +27,14 @@ return {
     end,
   },
 
+  -- Formatting
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('plugins.conform')
+    end,
+  },
+
   -- Fuzzy find
   {
     'nvim-telescope/telescope.nvim',
@@ -64,7 +72,6 @@ return {
 
   -- LSP
   'neovim/nvim-lspconfig',
-  'jose-elias-alvarez/null-ls.nvim',
   'yioneko/nvim-vtsls',
   'simrat39/rust-tools.nvim',
 

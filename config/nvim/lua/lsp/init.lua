@@ -18,35 +18,9 @@ require('rust-tools').setup({
   },
 })
 
--- format-on-save callback
-local lsp_formatting = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      -- disable tsserver-based formatting (in favor of Prettier via `null-ls`)
-      return client.name ~= "tsserver"
-    end,
-    bufnr = bufnr,
-  })
-end
-
--- format-on-save autocommand group
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- install lsp_formatting callback when supported by language server
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        lsp_formatting(bufnr)
-      end,
-    })
-  end
-
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -73,21 +47,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
-
---
--- null-ls
---
-local null_ls = require('null-ls')
-null_ls.setup({
-  capabilities = capabilities,
-  sources = {
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier.with({
-      prefer_local = "node_modules/.bin",
-    }),
-  },
-  on_attach = on_attach
-})
 
 lspconfig.prismals.setup({
   capabilities = capabilities,
