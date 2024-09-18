@@ -40,17 +40,18 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-frecency.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+			},
 		},
-	},
-	{
-		"nvim-telescope/telescope-frecency.nvim",
 		config = function()
-			require("telescope").load_extension("frecency")
+			require("plugins.telescope")
 		end,
 	},
 	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+		"nvim-telescope/telescope-frecency.nvim",
 	},
 
 	-- Terminal
