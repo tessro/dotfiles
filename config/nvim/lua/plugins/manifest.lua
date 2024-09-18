@@ -9,7 +9,7 @@ return {
     version = false,
     config = function()
       require('plugins.mini')
-    end
+    end,
   },
 
   -- Autocomplete
@@ -24,7 +24,7 @@ return {
     },
     config = function()
       require('plugins.cmp')
-    end
+    end,
   },
 
   -- Fuzzy find
@@ -48,7 +48,7 @@ return {
     version = '*',
     config = function()
       require('plugins.toggleterm')
-    end
+    end,
   },
 
   -- Git
@@ -56,7 +56,7 @@ return {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
-    end
+    end,
   },
 
   -- Just
@@ -77,7 +77,7 @@ return {
     build = ':TSUpdate',
     config = function()
       require('plugins.treesitter')
-    end
+    end,
   },
 
   -- Copilot
@@ -87,12 +87,12 @@ return {
       vim.defer_fn(function()
         require('plugins.copilot')
       end, 100)
-    end
+    end,
   },
   {
     'zbirenbaum/copilot-cmp',
     config = function()
       require('plugins.copilot_cmp')
-    end
+    end,
   }
 }
