@@ -4,6 +4,7 @@ vim.opt.updatetime = 100
 vim.opt.hlsearch = false
 vim.opt.wrap = false
 vim.opt.relativenumber = true
+vim.opt.tabstop = 2
 
 -- Editing
 vim.opt.expandtab = true
