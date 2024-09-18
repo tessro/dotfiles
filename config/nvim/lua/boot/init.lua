@@ -1,2 +1,2 @@
 -- Leader bindings
-vim.g.mapleader = ','
+vim.g.mapleader = ","

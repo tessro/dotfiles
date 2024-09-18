@@ -1,4 +1,4 @@
-require('boot')
-require('plugins')
-require('core')
-require('lsp')
+require("boot")
+require("plugins")
+require("core")
+require("lsp")
