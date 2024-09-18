@@ -48,10 +48,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
-lspconfig.prismals.setup({
-  capabilities = capabilities,
-})
-
 --
 -- Go
 --
@@ -82,6 +78,13 @@ lspconfig.lua_ls.setup({
       },
     },
   }
+})
+
+--
+-- Prisma
+--
+lspconfig.prismals.setup({
+  capabilities = capabilities,
 })
 
 --
