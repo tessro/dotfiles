@@ -179,7 +179,7 @@ lspconfig.eslint.setup({
       '.eslintrc.js',
       '.eslintrc.cjs',
       '.eslintrc.json'
-    )(fname) or lspconfig.util.root_pattern('package.json')(fname)
+    )(fname)
   end,
 })
 
