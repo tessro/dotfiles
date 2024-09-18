@@ -1,15 +1,24 @@
 local conform = require('conform')
 
-conform.setup({})
+conform.setup({
+  formatters_by_ft = {
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    go = { "goimports", "gofmt" },
+    lua = { "stylua" },
+    python = { "black" },
+    rust = { "rustfmt" },
+  },
 
---
--- Format on save
---
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    conform.format({ bufnr = args.buf })
-  end,
+  default_format_opts = {
+    lsp_format = "fallback",
+  },
+
+  format_on_save = {
+    lsp_format = "fallback",
+    timeout = 500,
+  },
+
+  notify_no_formatters = true,
 })
 
 --
