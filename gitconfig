@@ -15,6 +15,7 @@
   s = status
   w = whatchanged
   d = diff
+  db = diff --ignore-space-change
   dc = diff --cached
   ds = diff --stat
   dom = diff origin/main
