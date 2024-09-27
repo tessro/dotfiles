@@ -26,6 +26,7 @@
   ll = log -p
   g = log --graph --oneline --all
   ci = commit
+  cnv = commit --no-verify
   co = checkout
   r = rebase
   ra = rebase --abort
