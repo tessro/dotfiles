@@ -19,7 +19,7 @@ vim.opt.smartcase = true
 
 -- Theme
 vim.opt.termguicolors = true
-vim.cmd("colorscheme nord")
+vim.cmd("colorscheme catppuccin")
 
 -- The `vim.fn.expand` is there to support Windows (I haven't checked if Telescope actually needs this)
 vim.keymap.set("n", "<Leader>d", ":Telescope find_files cwd=" .. vim.fn.expand("~/.dotfiles") .. "<cr>")
