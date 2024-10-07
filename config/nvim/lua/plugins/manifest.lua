@@ -1,6 +1,7 @@
 return {
 	-- Color schemes
 	"arcticicestudio/nord-vim",
+	"catppuccin/nvim",
 	"rose-pine/neovim",
 
 	-- Many utilities
