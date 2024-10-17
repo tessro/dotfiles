@@ -80,6 +80,12 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+	{
+		"FabijanZulj/blame.nvim",
+		config = function()
+			require("blame").setup()
+		end,
+	},
 
 	-- Just
 	"NoahTheDuke/vim-just",
