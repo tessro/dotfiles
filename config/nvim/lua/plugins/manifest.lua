@@ -28,6 +28,15 @@ return {
 		end,
 	},
 
+	-- Debugging
+	"mfussenegger/nvim-dap",
+	{
+		"leoluz/nvim-dap-go",
+		config = function()
+			require("plugins.dap-go")
+		end,
+	},
+
 	-- Formatting
 	{
 		"stevearc/conform.nvim",
