@@ -22,14 +22,19 @@ vim.opt.termguicolors = true
 vim.cmd("colorscheme catppuccin")
 
 -- The `vim.fn.expand` is there to support Windows (I haven't checked if Telescope actually needs this)
-vim.keymap.set("n", "<Leader>d", ":Telescope find_files cwd=" .. vim.fn.expand("~/.dotfiles") .. "<cr>")
-vim.keymap.set("n", "<Leader>v", ":Telescope find_files cwd=" .. vim.fn.expand("~/.config/nvim") .. "<cr>")
-vim.keymap.set("n", "<Leader>f", "<cmd>Telescope find_files<cr>")
-vim.keymap.set("n", "<Leader>gb", "<cmd>BlameToggle window<cr>")
+vim.keymap.set("n", "<Leader>sd", ":Telescope find_files cwd=" .. vim.fn.expand("~/.dotfiles") .. "<cr>")
+vim.keymap.set("n", "<Leader>sv", ":Telescope find_files cwd=" .. vim.fn.expand("~/.config/nvim") .. "<cr>")
+vim.keymap.set("n", "<C-P>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<Leader>gr", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<Leader>gv", "<cmd>BlameToggle virtual<cr>")
-vim.keymap.set("n", "<Leader>b", "<cmd>Telescope buffers<cr>")
-vim.keymap.set("n", "<Leader>h", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<Leader>sb", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<Leader>sh", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<Leader>gb", "<cmd>BlameToggle window<cr>")
+vim.keymap.set("n", "<Leader>tb", "<cmd>BlameToggle virtual<cr>")
+vim.keymap.set("n", "<space><space>", "<cmd>Telescope buffers<cr>")
+
+-- Buffer navigation
+vim.keymap.set("n", "<TAB>", ":bnext<CR>")
+vim.keymap.set("n", "<S-TAB>", ":bprev<CR>")
 
 -- Split-screen navigation
 vim.keymap.set("", "<C-J>", "<C-W>j")
