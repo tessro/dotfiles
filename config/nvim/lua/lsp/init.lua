@@ -95,7 +95,7 @@ lspconfig.pyright.setup({
 	},
 })
 
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
