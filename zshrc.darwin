@@ -27,6 +27,3 @@ if which gpgconf >/dev/null ; then
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 fi
-
-# 1Password CLI
-source ~/.config/op/plugins.sh
