@@ -27,3 +27,9 @@ if which gpgconf >/dev/null ; then
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   gpgconf --launch gpg-agent
 fi
+
+# Espanso
+export ESPANSO_PATH="/Applications/Espanso.app/Contents/MacOS"
+if [ -d $ESPANSO_PATH ]; then
+  export PATH=$ESPANSO_PATH:$PATH
+fi
