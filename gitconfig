@@ -38,6 +38,7 @@
   sta = stash
   sp = stash pop
   sl = stash list
+  wip = commit --no-verify -m wip
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   pullff = pull --ff-only
   mergeff = merge --ff-only
