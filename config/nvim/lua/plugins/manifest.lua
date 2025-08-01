@@ -106,20 +106,4 @@ return {
 			require("plugins.treesitter")
 		end,
 	},
-
-	-- Copilot
-	{
-		"zbirenbaum/copilot.lua",
-		config = function()
-			vim.defer_fn(function()
-				require("plugins.copilot")
-			end, 100)
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("plugins.copilot_cmp")
-		end,
-	},
 }
