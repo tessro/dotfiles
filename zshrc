@@ -39,9 +39,12 @@ export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 setopt appendhistory
 
-# Use vim as the editor ...
-export EDITOR=nvim
-# ... but use emacs mode on the command line
+# We want `cursor` in Cursor
+if [ -z $EDITOR ]; then
+  export EDITOR=nvim
+fi
+
+# use emacs mode on the command line
 bindkey -e
 
 # Use C-x C-e to edit the current command line
