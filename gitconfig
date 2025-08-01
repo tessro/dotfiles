@@ -12,6 +12,7 @@
   ap = add --patch
   amend = commit --amend
   fix = commit --amend -C HEAD
+  fnv = commit --amend -C HEAD --no-verify
   s = status
   w = whatchanged
   d = diff
