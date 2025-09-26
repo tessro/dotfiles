@@ -23,9 +23,13 @@ if [ -z $TMUX ]; then
 fi
 
 # GPG+SSH
-if which gpgconf >/dev/null ; then
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  gpgconf --launch gpg-agent
+#if which gpgconf >/dev/null ; then
+#  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#  gpgconf --launch gpg-agent
+#fi
+secretive_socket_path=/Users/tess/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+if  [ -S $secretive_socket_path ] ; then
+  export SSH_AUTH_SOCK=$secretive_socket_path
 fi
 
 # Espanso
