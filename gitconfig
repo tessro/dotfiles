@@ -75,11 +75,5 @@
 [fetch]
   prune = true
 
-[commit]
-  gpgsign = true
-
-[tag]
-  gpgsign = true
-
 [include]
   path = .gitconfig.local
