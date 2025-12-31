@@ -85,3 +85,8 @@ export AWS_DEFAULT_REGION="us-west-2"
 # eliminates a potential security risk and also speeds up failure of aws
 # commands when no profile is selected.
 export AWS_EC2_METADATA_DISABLED="true"
+
+# Alias OpenTofu to `tf` if Terraform is not installed
+if ! command -v tf &> /dev/null; then
+  alias tf=tofu
+fi
