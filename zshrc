@@ -4,7 +4,7 @@ FPATH="$FPATH:$HOME/.zsh/func"
 # Set custom prompt
 autoload -Uz promptinit
 promptinit
-prompt ptr
+prompt tessro
 
 # Initialize completion
 autoload -U compinit

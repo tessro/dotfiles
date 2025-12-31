@@ -1,0 +1,65 @@
+# tessro prompt theme
+
+prompt_tessro_help() {
+  cat <<'EOF'
+  prompt tessro
+EOF
+}
+
+prompt_tessro_precmd() {
+  vcs_info
+
+  # Show user and host when connected via SSH
+  local remote
+  if [ ! -z $SSH_CLIENT ]; then
+    remote='%n@%m '
+  fi
+
+  # Show path relative to git repo root, or fallback to %2~
+  local path_display
+  if [[ -n $vcs_info_msg_0_ ]]; then
+    local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [[ -n $git_root ]]; then
+      local repo_name=${git_root:t}
+      local rel_path=${PWD#$git_root}
+      if [[ -z $rel_path ]]; then
+        path_display=$repo_name
+      else
+        path_display="$repo_name$rel_path"
+      fi
+    else
+      path_display='%2~'
+    fi
+  else
+    path_display='%2~'
+  fi
+
+  PS1="%(?.%F{green}✓.%F{red}✗)%f $remote$path_display$vcs_info_msg_0_ %# "
+}
+
+prompt_tessro_setup() {
+  autoload -Uz vcs_info
+  add-zsh-hook precmd prompt_tessro_precmd
+
+  local verbose
+  if [[ $TERM == screen* ]] && [ -n "$STY" ]; then
+    verbose=
+  else
+    verbose=1
+  fi
+
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr '+'
+  zstyle ':vcs_info:git:*' unstagedstr '*'
+  zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
+  zstyle ':vcs_info:git:*' formats ' (%b%u%c)'
+
+  # Disable detection for everything other than Git and Mercury
+  #
+  # See the full list (and what's disabled) by running `vcs_info_printsys`
+  zstyle ':vcs_info:*' enable git hg
+}
+
+prompt_tessro_setup "$@"
+
+# vim:set ft=zsh:
