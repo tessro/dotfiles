@@ -60,9 +60,6 @@ bindkey '\C-x\C-e' edit-command-line
 # Narrow that down to allow easier skipping through words via M-f and M-b.
 export WORDCHARS='*?[]~&;!$%^<>'
 
-# GPG
-export GPG_TTY="$(tty)"
-
 if which hub >/dev/null ; then alias git=hub ; fi
 
 if [[ $OSTYPE == darwin* ]] ; then source ~/.zshrc.darwin ; fi
@@ -72,7 +69,7 @@ if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
 if which pyenv >/dev/null ; then eval "$(pyenv init -)" ; fi
 if which pyenv-virtualenv >/dev/null ; then eval "$(pyenv virtualenv-init -)" ; fi
-if command -v wt >/dev/null 2>&1 ; then eval "$(command wt config shell init zsh)" ; fi
+if command -v wt >/dev/null 2>&1 ; then eval "$(wt config shell init zsh)" ; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
