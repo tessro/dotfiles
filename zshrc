@@ -73,6 +73,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+[ -s "$HOME/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
+[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Avoid cluttering the system namespace by accident
 export PIP_REQUIRE_VIRTUALENV=true
 
