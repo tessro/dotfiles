@@ -13,6 +13,9 @@ compinit -D
 # Add paths
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
+# Brew
+[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Rust
 if [[ -s $HOME/.cargo/env ]] ; then source $HOME/.cargo/env ; fi
 
@@ -68,14 +71,13 @@ if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
 if which pyenv >/dev/null ; then eval "$(pyenv init -)" ; fi
 if which pyenv-virtualenv >/dev/null ; then eval "$(pyenv virtualenv-init -)" ; fi
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+if command -v wt >/dev/null 2>&1 ; then eval "$(command wt config shell init zsh)" ; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -s "$HOME/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
-[ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Avoid cluttering the system namespace by accident
 export PIP_REQUIRE_VIRTUALENV=true
