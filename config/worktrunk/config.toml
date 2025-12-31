@@ -1,29 +1,10 @@
-# Worktrunk Global Configuration
-# Copy to: ~/.config/worktrunk/config.toml (or use `wt config create`)
-#
-# Alternative locations (XDG Base Directory spec):
-#   macOS/Linux:   $XDG_CONFIG_HOME/worktrunk/config.toml
-#   Windows:       %APPDATA%\worktrunk\config.toml
-
-# Commit Message Generation (Optional)
-# For generating commit messages during merge operations (wt merge)
-# [commit-generation]
-# Example: Simon Willison's llm CLI (https://github.com/simonw/llm)
-# Install: pip install llm llm-anthropic
+[commit-generation]
+# Simon Willison's llm CLI (https://github.com/simonw/llm)
+# Install: uv tool install llm llm-anthropic
 command = "llm"
 args = ["-m", "claude-haiku-4.5"]
 
-# Alternative: AIChat - Rust-based, supports 20+ providers
-# Install from: https://github.com/sigoden/aichat
-# command = "aichat"
-# args = ["-m", "claude:claude-haiku-4.5"]
-
-# Optional: Load template from file (mutually exclusive with 'template')
-# Supports ~ expansion: ~/.config/worktrunk/commit-template.txt
 template-file = "~/.config/worktrunk/commit-template.txt"
-
-# Optional: Load squash template from file (mutually exclusive with 'squash-template')
-# Supports ~ expansion: ~/.config/worktrunk/squash-template.txt
 squash-template-file = "~/.config/worktrunk/squash-template.txt"
 
 # See "Custom Prompt Templates" section at end of file for inline template options.
