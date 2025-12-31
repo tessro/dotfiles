@@ -18,14 +18,14 @@ prompt_tessro_precmd() {
   # Show path relative to git repo root, or fallback to %2~
   local path_display
   if [[ -n $vcs_info_msg_0_ ]]; then
-    local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
-    if [[ -n $git_root ]]; then
-      local repo_name=${git_root:t}
-      local rel_path=${PWD#$git_root}
+    local git_info=(${(f)"$(git rev-parse --show-toplevel --show-prefix 2>/dev/null)"})
+    if [[ -n $git_info[1] ]]; then
+      local repo_name=${git_info[1]:t}
+      local rel_path=${git_info[2]%/}
       if [[ -z $rel_path ]]; then
         path_display=$repo_name
       else
-        path_display="$repo_name$rel_path"
+        path_display="$repo_name/$rel_path"
       fi
     else
       path_display='%2~'
