@@ -20,11 +20,11 @@ args = ["-m", "claude-haiku-4.5"]
 
 # Optional: Load template from file (mutually exclusive with 'template')
 # Supports ~ expansion: ~/.config/worktrunk/commit-template.txt
-# template-file = "~/.config/worktrunk/commit-template.txt"
+template-file = "~/.config/worktrunk/commit-template.txt"
 
 # Optional: Load squash template from file (mutually exclusive with 'squash-template')
 # Supports ~ expansion: ~/.config/worktrunk/squash-template.txt
-# squash-template-file = "~/.config/worktrunk/squash-template.txt"
+squash-template-file = "~/.config/worktrunk/squash-template.txt"
 
 # See "Custom Prompt Templates" section at end of file for inline template options.
 

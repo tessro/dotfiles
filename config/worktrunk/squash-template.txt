@@ -1,0 +1,24 @@
+Combine these commits into a single commit message.
+
+<format>
+- Subject under 50 chars, blank line, then optional body
+- Output only the commit message, no quotes or code blocks
+</format>
+
+<style>
+- Imperative mood: "Add feature" not "Added feature"
+- Match the style of commits being squashed (conventional commits if used)
+- Describe the change, not the intent or benefit
+</style>
+
+<commits branch="{{ branch }}" target="{{ target_branch }}">
+{% for commit in commits %}- {{ commit }}
+{% endfor %}</commits>
+
+<diffstat>
+{{ git_diff_stat }}
+</diffstat>
+
+<diff>
+{{ git_diff }}
+</diff>
