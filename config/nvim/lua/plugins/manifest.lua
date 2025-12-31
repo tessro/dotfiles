@@ -93,7 +93,6 @@ return {
   -- LSP
   "neovim/nvim-lspconfig",
   "yioneko/nvim-vtsls",
-  "simrat39/rust-tools.nvim",
 
   -- Snippets
   "hrsh7th/vim-vsnip",
