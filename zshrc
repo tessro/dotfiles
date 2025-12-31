@@ -14,6 +14,7 @@ compinit -D
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
 # Brew
+[ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 [ -d /home/linuxbrew/.linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Rust

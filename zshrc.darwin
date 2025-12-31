@@ -1,32 +1,8 @@
-# Homebrew
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-if [ -z $TMUX ]; then
-  export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
-  export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
-  export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
-
-  # Reinitialize completions, to pick up Homebrew's function path
-  compinit -D
-fi
-
 # Also use bash completions
 autoload -U +X bashcompinit && bashcompinit
 
-export GOPATH="$HOME/Development/go"
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-if [ -z $TMUX ]; then
-  export PATH=$PATH:$GOPATH/bin:$HOME/Development/src/depot_tools
-fi
-
-# GPG+SSH
-#if which gpgconf >/dev/null ; then
-#  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-#  gpgconf --launch gpg-agent
-#fi
 secretive_socket_path=/Users/tess/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 if  [ -S $secretive_socket_path ] ; then
   export SSH_AUTH_SOCK=$secretive_socket_path
