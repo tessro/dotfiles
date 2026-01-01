@@ -7,8 +7,15 @@ Write a commit message for the staged changes below.
 
 <style>
 - Imperative mood: "Add feature" not "Added feature"
-- Match recent commit style (conventional commits if used)
-- Describe the change, not the intent or benefit
+- Prefer one-line commit messages, unless the commit has a unique need for
+  additional explanation (major feature, security fix explanation, etc.)
+- Subject:
+  - Conventional Commits format
+  - Describe the change, not the intent or benefit
+- Body:
+  - Markdown bullets
+  - Key elements of change only, omit inessential details
+  - Do not provide a blow-by-blow summary
 </style>
 
 <diffstat>
