@@ -1,63 +1,105 @@
-# tessro prompt theme
+# tessro prompt theme - catppuccin multiline
 
 prompt_tessro_help() {
   cat <<'EOF'
   prompt tessro
+
+  Multiline catppuccin prompt with git info.
+  Line 1: in path on branch+*
+  Line 2: › %
+
+  On /mnt/c/ paths, uses git.exe for all git ops (native Windows I/O).
 EOF
 }
 
 prompt_tessro_precmd() {
-  vcs_info
+  local exit_code=$?
 
-  # Show user and host when connected via SSH
-  local remote
-  if [ ! -z $SSH_CLIENT ]; then
-    remote='%n@%m '
-  fi
-
-  # Show path relative to git repo root, or fallback to %2~
-  local path_display
-  if [[ -n $vcs_info_msg_0_ ]]; then
-    local git_info=(${(f)"$(git rev-parse --show-toplevel --show-prefix 2>/dev/null)"})
-    if [[ -n $git_info[1] ]]; then
-      local repo_name=${git_info[1]:t}
-      local rel_path=${git_info[2]%/}
-      if [[ -z $rel_path ]]; then
-        path_display=$repo_name
-      else
-        path_display="$repo_name/$rel_path"
-      fi
+  # Use git.exe on Windows paths (native I/O, no 9P overhead)
+  # Cache check result for session
+  if [[ -z $_prompt_tessro_gcmd ]]; then
+    if whence git.exe &>/dev/null; then
+      typeset -g _prompt_tessro_has_git_exe=1
     else
-      path_display='%2~'
+      typeset -g _prompt_tessro_has_git_exe=0
     fi
-  else
-    path_display='%2~'
+    typeset -g _prompt_tessro_gcmd=1
   fi
 
-  PS1="%(?.%F{green}✓.%F{red}✗)%f $remote$path_display$vcs_info_msg_0_ %# "
+  local gcmd=git
+  if (( _prompt_tessro_has_git_exe )) && [[ ${PWD:A} == /mnt/c/* ]]; then
+    gcmd=git.exe
+  fi
+
+  # Build path display
+  local path_display="%F{147}%2~%f"  # default: lavender
+  local git_info=""
+
+  # Single git call for toplevel + prefix
+  local git_paths=$($gcmd rev-parse --show-toplevel --show-prefix 2>/dev/null)
+  if [[ -n $git_paths ]]; then
+    # Split on newline - prefix may be empty
+    local git_root rel_path
+    if [[ $git_paths == *$'\n'* ]]; then
+      git_root=${git_paths%%$'\n'*}
+      rel_path=${git_paths#*$'\n'}
+    else
+      git_root=$git_paths
+      rel_path=""
+    fi
+    rel_path=${rel_path%/}
+    local repo_name=${git_root:t}
+
+    # Bold + brighter lavender for repo, dimmer for subpath
+    if [[ -z $rel_path ]]; then
+      path_display="%B%F{183}${repo_name}%f%b"
+    else
+      path_display="%B%F{183}${repo_name}%f%b%F{147}/${rel_path}%f"
+    fi
+
+    # Single git status call for branch + dirty
+    local status_all=$($gcmd status --porcelain --branch 2>/dev/null)
+    local status_head=${status_all%%$'\n'*}
+    if [[ $status_head == \#\#* ]]; then
+      # Parse "## branch...tracking"
+      local branch=${status_head#\#\# }
+      branch=${branch%%...*}
+      branch=${branch%% \[*}
+      [[ $branch == "HEAD (no branch)" ]] && branch=$($gcmd rev-parse --short HEAD 2>/dev/null)
+
+      git_info=" %F{103}on%f %F{218}${branch}%f"
+
+      # Any lines after header = dirty
+      if [[ $status_all == *$'\n'* ]]; then
+        git_info+="%F{215}*%f"
+      fi
+    fi
+  fi
+
+  # Show user@host when connected via SSH (in mauve)
+  local remote=""
+  [[ -n $SSH_CLIENT ]] && remote='%F{183}%n@%m%f '
+
+  # Path line: soft accent + path
+  path_display="%F{103}in%f ${path_display}"
+
+  # Exit status indicator (teal/salmon)
+  local status_indicator
+  if (( exit_code == 0 )); then
+    status_indicator='%F{158}›%f'
+  else
+    status_indicator='%F{210}›%f'
+  fi
+
+  PS1="${remote}${path_display}${git_info}
+${status_indicator} %# "
 }
 
 prompt_tessro_setup() {
-  autoload -Uz vcs_info
+  prompt_opts=(percent subst)
+
+  autoload -Uz add-zsh-hook
   add-zsh-hook precmd prompt_tessro_precmd
-
-  local verbose
-  if [[ $TERM == screen* ]] && [ -n "$STY" ]; then
-    verbose=
-  else
-    verbose=1
-  fi
-
-  zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr '+'
-  zstyle ':vcs_info:git:*' unstagedstr '*'
-  zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
-  zstyle ':vcs_info:git:*' formats ' (%b%u%c)'
-
-  # Disable detection for everything other than Git and Mercury
-  #
-  # See the full list (and what's disabled) by running `vcs_info_printsys`
-  zstyle ':vcs_info:*' enable git hg
 }
 
 prompt_tessro_setup "$@"
