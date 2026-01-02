@@ -70,8 +70,8 @@ prompt_tessro_precmd() {
       git_info=" %F{103}on%f %F{218}${branch}%f"
 
       # Check for staged vs unstaged changes
-      local status_lines=${status_all#*$'\n'}
-      if [[ -n $status_lines ]]; then
+      if [[ $status_all == *$'\n'* ]]; then
+        local status_lines=${status_all#*$'\n'}
         local has_staged=0 has_unstaged=0
         while IFS= read -r line; do
           [[ -z $line ]] && continue
