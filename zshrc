@@ -20,6 +20,9 @@ export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 # Rust
 if [[ -s $HOME/.cargo/env ]] ; then source $HOME/.cargo/env ; fi
 
+# Go
+if command -v go &>/dev/null ; then export PATH="$(go env GOPATH)/bin:$PATH" ; fi
+
 # Handy
 function mkcd () {
   mkdir -p "$*"
