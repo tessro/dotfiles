@@ -69,9 +69,20 @@ prompt_tessro_precmd() {
 
       git_info=" %F{103}on%f %F{218}${branch}%f"
 
-      # Any lines after header = dirty
-      if [[ $status_all == *$'\n'* ]]; then
-        git_info+="%F{215}*%f"
+      # Check for staged vs unstaged changes
+      local status_lines=${status_all#*$'\n'}
+      if [[ -n $status_lines ]]; then
+        local has_staged=0 has_unstaged=0
+        while IFS= read -r line; do
+          [[ -z $line ]] && continue
+          local x=${line:0:1} y=${line:1:1}
+          # Staged: X is not space or ?
+          [[ $x != ' ' && $x != '?' ]] && has_staged=1
+          # Unstaged: Y is not space, or untracked (??)
+          [[ $y != ' ' || $x == '?' ]] && has_unstaged=1
+        done <<< "$status_lines"
+        (( has_staged )) && git_info+="%F{158}+%f"
+        (( has_unstaged )) && git_info+="%F{215}*%f"
       fi
     fi
   fi
@@ -83,16 +94,12 @@ prompt_tessro_precmd() {
   # Path line: soft accent + path
   path_display="%F{103}in%f ${path_display}"
 
-  # Exit status indicator (teal/salmon)
-  local status_indicator
-  if (( exit_code == 0 )); then
-    status_indicator='%F{158}›%f'
-  else
-    status_indicator='%F{210}›%f'
-  fi
+  # Prompt: teal on success, salmon on error
+  local prompt_char='%F{158}%#%f'
+  (( exit_code != 0 )) && prompt_char='%F{210}%#%f'
 
   PS1="${remote}${path_display}${git_info}
-${status_indicator} %# "
+${prompt_char} "
 }
 
 prompt_tessro_setup() {
