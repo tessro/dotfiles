@@ -95,8 +95,8 @@ prompt_tessro_precmd() {
   path_display="%F{103}in%f ${path_display}"
 
   # Prompt: teal on success, salmon on error
-  local prompt_char='%F{158}%#%f'
-  (( exit_code != 0 )) && prompt_char='%F{210}%#%f'
+  local prompt_char='%F{147}%#%f'
+  (( exit_code != 0 )) && prompt_char='%F{218}%#%f'
 
   PS1="${remote}${path_display}${git_info}
 ${prompt_char} "
