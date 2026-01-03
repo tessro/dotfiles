@@ -12,20 +12,38 @@
       "WebFetch(domain:pkg.go.dev)",
       "WebFetch(domain:tessro.ai)",
 
+      "Skill(beads:*)",
+      "Bash(bd:*)",
+
       "Bash(cat:*)",
+      "Bash(diff:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(tail:*)",
 
+      "Bash(convert:*)",
+
+      "Bash(git blame:*)",
       "Bash(git branch:*)",
+      "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
+      "Bash(git status:*)",
 
       "Bash(cargo check:*)",
+      "Bash(rustfmt)",
+
       "Bash(go fmt:*)",
       "Bash(golangci-lint)",
+
+      "Bash(pnpm build)",
+      "Bash(pnpm check-all)",
       "Bash(pnpm fmt:*)",
-      "Bash(pnpm typecheck:*)",
-      "Bash(rustfmt)"
+      "Bash(pnpm install)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm typecheck)"
     ]
   },
   "enabledPlugins": {
