@@ -6,6 +6,12 @@
   "permissions": {
     "defaultMode": "default",
     "allow": [
+      "WebSearch",
+      "WebFetch(domain:docs.rs)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:pkg.go.dev)",
+      "WebFetch(domain:tessro.ai)",
+
       "Bash(cat:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
