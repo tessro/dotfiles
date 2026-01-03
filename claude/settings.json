@@ -22,11 +22,13 @@
       "Bash(head:*)",
       "Bash(ls:*)",
       "Bash(tail:*)",
+      "Bash(wc:*)",
 
       "Bash(convert:*)",
 
       "Bash(git blame:*)",
       "Bash(git branch:*)",
+      "Bash(git check-ignore:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
@@ -35,7 +37,12 @@
       "Bash(cargo check:*)",
       "Bash(rustfmt)",
 
+      "Bash(go build:*)",
       "Bash(go fmt:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go test:*)",
+      "Bash(go vet:*)",
+      "Bash(gofmt:*)",
       "Bash(golangci-lint)",
 
       "Bash(pnpm build)",
