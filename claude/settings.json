@@ -2,10 +2,31 @@
   "attribution": {
     "commit": ""
   },
+  "model": "opus",
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+
+      "Bash(git branch:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+
+      "Bash(cargo check:*)",
+      "Bash(go fmt:*)",
+      "Bash(golangci-lint)",
+      "Bash(pnpm fmt:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(rustfmt)"
+    ]
+  },
   "enabledPlugins": {
-    "worktrunk@worktrunk": true,
+    "beads@beads-marketplace": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "beads@beads-marketplace": true
+    "typescript-lsp@claude-plugins-official": true,
+    "worktrunk@worktrunk": true
   },
   "trustedDirectories": [
     "/home/tess/repos",
