@@ -3,10 +3,7 @@ autoload -U +X bashcompinit && bashcompinit
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-secretive_socket_path=/Users/tess/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-if  [ -S $secretive_socket_path ] ; then
-  export SSH_AUTH_SOCK=$secretive_socket_path
-fi
+export SSH_AUTH_SOCK="~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 # Espanso
 export ESPANSO_PATH="/Applications/Espanso.app/Contents/MacOS"
