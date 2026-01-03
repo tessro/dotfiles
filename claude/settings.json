@@ -22,6 +22,7 @@
       "Bash(head:*)",
       "Bash(ls:*)",
       "Bash(tail:*)",
+      "Bash(tree:*)",
       "Bash(wc:*)",
 
       "Bash(convert:*)",
