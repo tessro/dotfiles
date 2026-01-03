@@ -1,3 +1,6 @@
 # WSL-specific config
 
-# vi:syntax=zsh:
+alias ssh='ssh.exe'
+alias ssh-add='ssh-add.exe'
+
+# vi:syntax=bash:
