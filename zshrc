@@ -78,7 +78,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[ -s "$HOME/.local/bin/mise" ] && eval "$(~/.local/bin/mise activate zsh)"
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 
 # Avoid cluttering the system namespace by accident
 export PIP_REQUIRE_VIRTUALENV=true
