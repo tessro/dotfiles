@@ -8,7 +8,7 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  - trigger: ";em"
+  - trigger: ";ep"
     replace: "tess.rosania@gmail.com"
   - trigger: ";ew"
     replace: "tess@sierra.ai"
