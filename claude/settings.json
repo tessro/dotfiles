@@ -44,7 +44,7 @@
       "Bash(go test:*)",
       "Bash(go vet:*)",
       "Bash(gofmt:*)",
-      "Bash(golangci-lint)",
+      "Bash(golangci-lint:*)",
 
       "Bash(pnpm build)",
       "Bash(pnpm check-all)",
@@ -56,6 +56,7 @@
   },
   "enabledPlugins": {
     "beads@beads-marketplace": true,
+    "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true
