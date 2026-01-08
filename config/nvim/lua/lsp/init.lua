@@ -74,19 +74,6 @@ vim.lsp.config("rust_analyzer", {
 	},
 })
 
---
--- ESLint
---
-vim.lsp.config("eslint", {
-	root_markers = { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" },
-})
-
---
--- vtsls (via nvim-vtsls plugin)
---
-local vtsls = require("vtsls")
-vim.lsp.config("vtsls", vtsls.lspconfig.default_config)
-
 -- Enable all servers
 vim.lsp.enable({
 	"gopls",
