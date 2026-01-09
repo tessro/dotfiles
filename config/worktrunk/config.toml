@@ -1,3 +1,4 @@
+skip-shell-integration-prompt = true
 [commit-generation]
 # Simon Willison's llm CLI (https://github.com/simonw/llm)
 # Install: uv tool install llm llm-anthropic
