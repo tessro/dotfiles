@@ -1,0 +1,18 @@
+layout {
+    pane split_direction="vertical" {
+        pane split_direction="horizontal" size="60%" {
+            pane size="80%" command="bash" name="claude" focus=true {
+                args "-c" "sleep 0.3 && claude"
+            }
+            pane size="20%" name="terminal"
+        }
+        pane split_direction="horizontal" size="40%" {
+            pane size="80%" command="make" name="dev-server" {
+                args "dev-server"
+            }
+            pane size="20%" command="make" name="dev-web" {
+                args "dev-web"
+            }
+        }
+    }
+}
