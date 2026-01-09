@@ -8,6 +8,19 @@ args = ["-m", "claude-haiku-4.5"]
 template-file = "~/.config/worktrunk/commit-template.txt"
 squash-template-file = "~/.config/worktrunk/squash-template.txt"
 
+[projects]
+
+[projects."github.com/sierra-inc/sierra"]
+approved-commands = [
+    "bin/choose-dev-ports-worktree",
+    "bin/cleanup-claude-settings",
+    "bin/generate-claude-settings",
+    "ln -s {{ main_worktree_path }}/CLAUDE.local.md CLAUDE.local.md",
+    "ln -s {{ main_worktree_path }}/.bucket .bucket",
+    "ln -s {{ main_worktree_path }}/.ssl .ssl",
+    "pnpm --dir web install",
+]
+
 # See "Custom Prompt Templates" section at end of file for inline template options.
 
 # Worktree Path Template
