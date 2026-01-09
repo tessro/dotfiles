@@ -55,7 +55,6 @@
     ]
   },
   "enabledPlugins": {
-    "beads@beads-marketplace": true,
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -63,15 +62,7 @@
   },
   "trustedDirectories": [
     "/home/tess/repos",
-    "/mnt/c/Users/tess/Development"
-  ],
-  "mcpServers": {
-    "mcp-agent-mail": {
-      "type": "http",
-      "url": "http://127.0.0.1:8765/mcp/",
-      "headers": {
-        "Authorization": "Bearer 19b50a41cdb1192a00cbdd5f70b08e8cbb7b0b1cc85d3960458b201c1530241f"
-      }
-    }
-  }
+    "/mnt/c/Users/tess/Development",
+    "/Users/tess/repos"
+  ]
 }
