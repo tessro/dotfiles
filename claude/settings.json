@@ -11,10 +11,7 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:pkg.go.dev)",
       "WebFetch(domain:tessro.ai)",
-
-      "Skill(beads:*)",
-      "Bash(bd:*)",
-
+      "Bash(tk:*)",
       "Bash(cat:*)",
       "Bash(diff:*)",
       "Bash(find:*)",
@@ -45,20 +42,22 @@
       "Bash(go vet:*)",
       "Bash(gofmt:*)",
       "Bash(golangci-lint:*)",
-
       "Bash(pnpm build)",
       "Bash(pnpm check-all)",
       "Bash(pnpm fmt:*)",
       "Bash(pnpm install)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm typecheck)"
-    ]
+    ],
+    "defaultMode": "default"
   },
+  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "worktrunk@worktrunk": true
+    "worktrunk@worktrunk": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "trustedDirectories": [
     "/home/tess/repos",
