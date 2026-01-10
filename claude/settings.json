@@ -2,9 +2,7 @@
   "attribution": {
     "commit": ""
   },
-  "model": "opus",
   "permissions": {
-    "defaultMode": "default",
     "allow": [
       "WebSearch",
       "WebFetch(domain:docs.rs)",
@@ -21,9 +19,7 @@
       "Bash(tail:*)",
       "Bash(tree:*)",
       "Bash(wc:*)",
-
       "Bash(convert:*)",
-
       "Bash(git blame:*)",
       "Bash(git branch:*)",
       "Bash(git check-ignore:*)",
@@ -31,10 +27,8 @@
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git status:*)",
-
       "Bash(cargo check:*)",
       "Bash(rustfmt)",
-
       "Bash(go build:*)",
       "Bash(go fmt:*)",
       "Bash(go mod tidy:*)",
@@ -51,7 +45,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
