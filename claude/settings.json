@@ -45,16 +45,12 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
     "swift-lsp@claude-plugins-official": true
-  },
-  "trustedDirectories": [
-    "/home/tess/repos",
-    "/mnt/c/Users/tess/Development",
-    "/Users/tess/repos"
-  ]
+  }
 }
