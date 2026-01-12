@@ -6,6 +6,7 @@ stats-cache.json
 /chrome
 /debug
 /file-history
+/paste-cache
 /plans
 /plugins
 /projects
