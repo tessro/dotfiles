@@ -3,6 +3,7 @@ history.jsonl
 stats-cache.json
 
 /cache
+/chrome
 /debug
 /file-history
 /plans
