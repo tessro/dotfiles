@@ -13,4 +13,5 @@ stats-cache.json
 /session-env
 /shell-snapshots
 /statsig
+/telemetry
 /todos
