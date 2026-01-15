@@ -1,4 +1,3 @@
-skip-shell-integration-prompt = true
 [commit-generation]
 # Simon Willison's llm CLI (https://github.com/simonw/llm)
 # Install: uv tool install llm llm-anthropic
@@ -15,10 +14,11 @@ approved-commands = [
     "bin/choose-dev-ports-worktree",
     "bin/cleanup-claude-settings",
     "bin/generate-claude-settings",
-    "ln -s {{ main_worktree_path }}/CLAUDE.local.md CLAUDE.local.md",
-    "ln -s {{ main_worktree_path }}/.bucket .bucket",
-    "ln -s {{ main_worktree_path }}/.ssl .ssl",
+    "ln -s {{ primary_worktree_path }}/CLAUDE.local.md CLAUDE.local.md",
+    "ln -s {{ primary_worktree_path }}/.bucket .bucket",
+    "ln -s {{ primary_worktree_path }}/.ssl .ssl",
     "pnpm --dir web install",
+    "pnpm --dir journeys/sdk install",
 ]
 
 # See "Custom Prompt Templates" section at end of file for inline template options.
