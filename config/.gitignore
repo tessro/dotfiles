@@ -13,12 +13,14 @@ chromium
 configstore
 dconf
 discord
+dlv
 git
 github-copilot
 google
 google-chrome
 google-chrome-beta
 google-chrome-unstable
+htop
 hub
 inkscape
 io.datasette.llm
@@ -26,6 +28,7 @@ iterm2
 menus
 microsoft-edge-dev
 mimeapps.list
+mozc
 nextjs-nodejs
 nvim/lua/local
 obsidian
