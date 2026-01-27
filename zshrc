@@ -92,8 +92,9 @@ export AWS_EC2_METADATA_DISABLED="true"
 
 # Zellij
 alias z="zellij"
-alias za="zellij attach"
 alias zl="zellij ls"
+zc() { zellij --session "${1:-${PWD:t}}" "${@:2}" }
+za() { zellij attach "${1:-${PWD:t}}" "${@:2}" }
 
 # Alias OpenTofu to `tf` if Terraform is not installed
 if ! command -v tf &> /dev/null; then
