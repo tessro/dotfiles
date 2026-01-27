@@ -90,6 +90,11 @@ export AWS_DEFAULT_REGION="us-west-2"
 # commands when no profile is selected.
 export AWS_EC2_METADATA_DISABLED="true"
 
+# Zellij
+alias z="zellij"
+alias za="zellij attach"
+alias zl="zellij ls"
+
 # Alias OpenTofu to `tf` if Terraform is not installed
 if ! command -v tf &> /dev/null; then
   alias tf=tofu
