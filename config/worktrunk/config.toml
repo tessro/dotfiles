@@ -1,8 +1,7 @@
-[commit-generation]
+[commit.generation]
 # Simon Willison's llm CLI (https://github.com/simonw/llm)
 # Install: uv tool install llm llm-anthropic
-command = "llm"
-args = ["-m", "claude-haiku-4.5"]
+command = "llm -m claude-haiku-4.5"
 
 template-file = "~/.config/worktrunk/commit-template.txt"
 squash-template-file = "~/.config/worktrunk/squash-template.txt"
