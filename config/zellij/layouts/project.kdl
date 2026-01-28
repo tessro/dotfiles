@@ -1,0 +1,8 @@
+layout {
+    pane split_direction="vertical" {
+        pane size="60%" command="bash" name="claude" focus=true {
+            args "-c" "sleep 0.3 && claude"
+        }
+        pane size="40%" name="shell"
+    }
+}

@@ -96,6 +96,24 @@ alias zl="zellij ls"
 zc() { zellij --session "${1:-${PWD:t}}" "${@:2}" }
 za() { zellij attach "${1:-${PWD:t}}" "${@:2}" }
 
+# Open a new zellij tab for a project with claude+shell layout
+zellij-new-worktree() {
+  local repos_dir="${HOME}/repos"
+  local selected
+
+  selected=$(find "$repos_dir" -maxdepth 1 -mindepth 1 -type d 2>/dev/null | \
+    sed "s|^${repos_dir}/||" | \
+    sort | \
+    fzf --height=40% --reverse --prompt="project> ")
+
+  [[ -z "$selected" ]] && return 0
+
+  local project_path="${repos_dir}/${selected}"
+  local tab_name="${selected:0:20}"  # truncate to 20 chars
+
+  zellij action new-tab --layout project --name "$tab_name" --cwd "$project_path"
+}
+
 # Alias OpenTofu to `tf` if Terraform is not installed
 if ! command -v tf &> /dev/null; then
   alias tf=tofu
