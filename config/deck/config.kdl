@@ -1,0 +1,29 @@
+settings {
+    brightness 80
+}
+
+buttons {
+    button 0 {
+        label "➕"
+        color "#000000"
+        hotkey "Ctrl+t,w,Enter"
+    }
+
+    button 1 {
+        label "⬅️"
+        color "#000000"
+        hotkey "Ctrl+t,h,Enter"
+    }
+
+    button 2 {
+        label "➡️"
+        color "#000000"
+        hotkey "Ctrl+t,l,Enter"
+    }
+
+    button 4 {
+        label "❌"
+        color "#000000"
+        hotkey "Ctrl+t,x,Enter"
+    }
+}
