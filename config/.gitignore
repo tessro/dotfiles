@@ -10,7 +10,9 @@ autostart
 cagent
 cef_user_data
 chromium
+concierge
 configstore
+counsel
 dconf
 discord
 dlv
@@ -21,6 +23,7 @@ github-copilot
 google
 google-chrome
 google-chrome-beta
+google-chrome-for-testing
 google-chrome-unstable
 htop
 hub
