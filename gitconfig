@@ -50,6 +50,17 @@
 [core]
   excludesfile = ~/.gitignore
 
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
 [filter "media"]
   clean = git-media-clean %f
   smudge = git-media-smudge %f
@@ -57,11 +68,6 @@
 [http]
   cookiefile = ~/.gitcookies
   postBuffer = 524288000
-
-[filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
 
 [grep]
   lineNumber = true
