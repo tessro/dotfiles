@@ -63,25 +63,12 @@ bindkey '\C-x\C-e' edit-command-line
 # Narrow that down to allow easier skipping through words via M-f and M-b.
 export WORDCHARS='*?[]~&;!$%^<>'
 
-if which hub >/dev/null ; then alias git=hub ; fi
-
 if [[ $OSTYPE == darwin* ]] ; then source ~/.zshrc.darwin ; fi
 if uname -r | grep -q microsoft-standard-WSL2 ; then source ~/.zshrc.wsl2 ; fi
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
-if which rbenv >/dev/null ; then eval "$(rbenv init -)" ; fi
-if which pyenv >/dev/null ; then eval "$(pyenv init -)" ; fi
-if which pyenv-virtualenv >/dev/null ; then eval "$(pyenv virtualenv-init -)" ; fi
 if command -v wt >/dev/null 2>&1 ; then eval "$(wt config shell init zsh)" ; fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 command -v mise >/dev/null && eval "$(mise activate zsh)"
-
-# Avoid cluttering the system namespace by accident
-export PIP_REQUIRE_VIRTUALENV=true
 
 export AWS_DEFAULT_REGION="us-west-2"
 
