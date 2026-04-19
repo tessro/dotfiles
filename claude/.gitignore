@@ -1,7 +1,9 @@
 .credentials.json
 history.jsonl
+mcp-needs-auth-cache.json
 stats-cache.json
 
+/backups
 /cache
 /chrome
 /debug
@@ -11,6 +13,7 @@ stats-cache.json
 /plugins
 /projects
 /session-env
+/sessions
 /shell-snapshots
 /statsig
 /tasks
