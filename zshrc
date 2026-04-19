@@ -68,6 +68,7 @@ if uname -r | grep -q microsoft-standard-WSL2 ; then source ~/.zshrc.wsl2 ; fi
 if [[ -s ~/.zshrc.local ]] ; then source ~/.zshrc.local ; fi
 
 if command -v wt >/dev/null 2>&1 ; then eval "$(wt config shell init zsh)" ; fi
+command -v fnox >/dev/null && eval "$(fnox activate zsh)"
 command -v mise >/dev/null && eval "$(mise activate zsh)"
 
 export AWS_DEFAULT_REGION="us-west-2"

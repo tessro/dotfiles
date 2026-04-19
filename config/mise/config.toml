@@ -1,4 +1,5 @@
 [tools]
+fnox = "latest"
 go = "latest"
 node = "lts"
 pnpm = "latest"

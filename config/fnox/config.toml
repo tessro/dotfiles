@@ -1,0 +1,9 @@
+default_provider = "onepass"
+
+[providers.onepass]
+type = "1password"
+vault = "Private"
+account = "rosania.1password.com"
+
+[secrets]
+ANTHROPIC_API_KEY= { provider = "onepass", value = "Anthropic API Key" }
