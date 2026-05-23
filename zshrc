@@ -46,10 +46,14 @@ export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 setopt appendhistory
 
-# We want `cursor` in Cursor
-if [ -z $EDITOR ]; then
-  export EDITOR=nvim
-fi
+# Editor
+for editor in nvim vim vi; do
+  if command -v "$editor" >/dev/null 2>&1; then
+    export EDITOR="$editor"
+    export VISUAL="$editor"
+    break
+  fi
+done
 
 # use emacs mode on the command line
 bindkey -e
