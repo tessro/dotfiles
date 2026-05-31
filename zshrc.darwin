@@ -1,10 +1,6 @@
 # Also use bash completions
 autoload -U +X bashcompinit && bashcompinit
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-export SSH_AUTH_SOCK="~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
 # Espanso
 export ESPANSO_PATH="/Applications/Espanso.app/Contents/MacOS"
 if [ -d $ESPANSO_PATH ]; then
