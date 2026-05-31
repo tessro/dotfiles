@@ -52,5 +52,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
     "swift-lsp@claude-plugins-official": true
-  }
+  },
+  "theme": "auto"
 }
