@@ -39,6 +39,9 @@
 
 auto-update-channel = tip
 
+font-family = "Berkeley Mono"
+font-size = 15
+
 theme = Catppuccin Mocha
 maximize = true
 
