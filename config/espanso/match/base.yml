@@ -12,6 +12,11 @@ matches:
     replace: "tess.rosania@gmail.com"
   - trigger: ";ew"
     replace: "tess@sierra.ai"
+  - trigger: ";int"
+    replace: |
+      Strengths:
+
+      Opportunities:
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
