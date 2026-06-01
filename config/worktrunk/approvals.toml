@@ -1,0 +1,4 @@
+[projects."github.com/sierra-inc/sierra"]
+approved-commands = [
+    "bin/cleanup-claude-settings",
+]
